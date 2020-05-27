@@ -4,7 +4,7 @@ import "./ContactDetails.css";
 const ContactDetails = ({
   label,
   placeholder,
-  value,
+  email,
   handleOnInputChanged,
   invalid,
   required
@@ -20,7 +20,7 @@ const ContactDetails = ({
         aria-label={label}
         placeholder={placeholder}
         onChange={handleOnInputChanged}
-        value={value}
+        value={email}
         maxLength="128"
         aria-required="true"
         aria-invalid={!!invalid} />

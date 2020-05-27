@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactDetails renders properly 1`] = `
+<div
+  className="form-item"
+>
+  <label
+    htmlFor="email-id"
+  >
+    <span
+      className="input-label "
+    >
+      Email
+    </span>
+    <input
+      aria-describedby="email-error"
+      aria-invalid={false}
+      aria-label="Email"
+      aria-required="true"
+      className="form-input "
+      id="email-id"
+      maxLength="128"
+      onChange={undefined}
+      placeholder="name@example.com"
+      type="text"
+      value={undefined}
+    />
+  </label>
+  <div
+    className="error-ifo"
+    id="email-error"
+  />
+</div>
+`;
