@@ -1,5 +1,5 @@
 import React from "react";
-import "./ContactDetails.css";
+import "./contactDetails.css";
 
 const ContactDetails = ({
   label,
