@@ -1,14 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { nanoid } from 'nanoid';
+import { create } from "react-test-renderer";
 import Tooltip from './Tooltip';
 
-const message = 'test tooltip';
-const position = 'bottom';
-
-const component = shallow(
+const component = create(
   <Tooltip
-    message={message}
-    position={position} />
+    message="I am a tooltip"
+    position="top" />
 );
 
 describe('Tooltip component', () => {

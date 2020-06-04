@@ -5,7 +5,7 @@ const Checkbox = ({
   label,
   id,
   checked,
-  onChange,
+  onHandleChange,
   disabled,
   value,
   itemsRef,
@@ -20,7 +20,7 @@ const Checkbox = ({
       aria-describedby={describedBy}
       className={`form-checkbox ${invalid ? 'error' : ''}`}
       checked={checked}
-      onChange={onChange}
+      onChange={onHandleChange}
       disabled={disabled}
       value={value} />
     <label className={`option ${disabled ? 'disabled' : ''}`} htmlFor={id}>
@@ -34,7 +34,7 @@ Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
+  onHandleChange: PropTypes.func.isRequired,
   value: PropTypes.string,
   itemsRef: PropTypes.shape({}),
   invalid: PropTypes.bool,

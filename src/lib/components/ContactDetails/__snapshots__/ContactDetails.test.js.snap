@@ -8,10 +8,11 @@ exports[`ContactDetails renders properly 1`] = `
     htmlFor="email-id"
   >
     <span
-      className="input-label "
+      className="input-label"
     >
       Email
     </span>
+    
     <input
       aria-describedby="email-error"
       aria-invalid={false}
@@ -20,10 +21,10 @@ exports[`ContactDetails renders properly 1`] = `
       className="form-input "
       id="email-id"
       maxLength="128"
-      onChange={undefined}
+      onChange={[Function]}
       placeholder="name@example.com"
       type="text"
-      value={undefined}
+      value="test@eamil.com"
     />
   </label>
   <div

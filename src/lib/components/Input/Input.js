@@ -9,6 +9,7 @@ const Input = (props) => {
     handleOnInputChanged,
     children,
     maxLength,
+    minLength,
     invalid,
     placeholder,
     autoComplete,
@@ -20,7 +21,8 @@ const Input = (props) => {
   return (
     <div className="form-item">
       <label htmlFor={inputId}>
-        <span className={`input-label ${required ? 'element-required' : ''}`}>{label}</span>
+        <span className="input-label">{label}</span>
+        {required ? <span style={{ color: 'red' }}>*</span> : ''}
         {children}
         <input
           id={inputId}
@@ -35,6 +37,7 @@ const Input = (props) => {
           value={value}
           ref={inputRef}
           maxLength={maxLength}
+          minLength={minLength}
           aria-required="true"
           aria-invalid={!!invalid} />
       </label>
@@ -48,6 +51,7 @@ Input.propTypes = {
   value: PropTypes.string,
   inputId: PropTypes.string.isRequired,
   maxLength: PropTypes.number,
+  minLength: PropTypes.number,
   invalid: PropTypes.bool,
   autoComplete: PropTypes.string,
   placeholder: PropTypes.string,

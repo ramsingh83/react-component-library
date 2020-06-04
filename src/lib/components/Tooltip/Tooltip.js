@@ -10,10 +10,6 @@ import { nanoid } from 'nanoid';
 import Icon from '../Icon/Icon';
 
 class Tooltip extends Component {
-  static keyboardConstants = {
-    enter: 13 // The 13 value is equivalent to the "Enter" or the "Return" key code
-  };
-
   constructor(props) {
     super(props);
 
@@ -23,6 +19,10 @@ class Tooltip extends Component {
     this.tooltipRef = React.createRef();
     this.handleToggleTooltip = this.handleToggleTooltip.bind(this);
     this.handleKeyPressToggle = this.handleKeyPressToggle.bind(this);
+  }
+
+  static keyboardConstants = {
+    enter: 13 // The 13 value is equivalent to the "Enter" or the "Return" key code
   }
 
   handleToggleTooltip(e) {

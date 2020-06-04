@@ -1,5 +1,4 @@
-import React from "react";
-import "./contactDetails.css";
+import React from 'react';
 
 const ContactDetails = ({
   label,
@@ -11,7 +10,8 @@ const ContactDetails = ({
 }) => (
   <div className="form-item">
     <label htmlFor="email-id">
-      <span className={`input-label ${required ? 'element-required' : ''}`}>{label}</span>
+      <span className="input-label">{label}</span>
+      {required ? <span style={{ color: 'red' }}>*</span> : ''}
       <input
         id="email-id"
         type="text"
@@ -26,6 +26,7 @@ const ContactDetails = ({
         aria-invalid={!!invalid} />
     </label>
     <div id="email-error" className="error-ifo"></div>
+    {console.log('test')}
   </div>
 );
 
