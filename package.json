@@ -14,8 +14,10 @@
     "@babel/cli": "^7.10.0",
     "@babel/preset-env": "^7.10.0",
     "@babel/preset-react": "^7.10.0",
+    "axios": "^0.19.2",
     "cross-env": "^7.0.2",
     "react": "^16.13.1",
+    "react-debounce-input": "^3.2.2",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-test-renderer": "^16.13.1"

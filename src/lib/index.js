@@ -9,6 +9,7 @@ import RadioButton from './components/RadioButton/RadioButton';
 import SectionWrap from './components/SectionWrap/SectionWrap';
 import Spinner from './components/Spinner/Spinner';
 import Tooltip from './components/Tooltip/Tooltip';
+import PostcodeFinder from './components/PostcodeFinder/PostcodeFinder';
 
 export {
   Button,
@@ -18,6 +19,7 @@ export {
   Icon,
   Input,
   Modal,
+  PostcodeFinder,
   RadioButton,
   SectionWrap,
   Spinner,

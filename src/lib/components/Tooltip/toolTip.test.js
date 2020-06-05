@@ -1,5 +1,4 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import { create } from "react-test-renderer";
 import Tooltip from './Tooltip';
 
