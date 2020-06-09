@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { DebounceInput } from 'react-debounce-input';
 import AddressList from './AddressList';
-import { getAddresses, setAddress } from './loqate.service';
-
 
 const PostcodeFinder = (props) => {
   const [searchText, setSearchText] = useState('');
   const [addressList, setAddressList] = useState(null);
   const [error, setError] = useState('');
+  const [loqateAddress, setLoqateAddress] = useState('');
   
   const {
     setSearchResult,
@@ -39,21 +39,22 @@ const PostcodeFinder = (props) => {
         address[key] = selectedAddress[key];
       }
     });
-    return address;
+    setLoqateAddress(address);
+    setSearchResult(address);
   };
 
-  const getAddressList = (postcode, id) => {
+  const getAddressList = (addressStr, addressId) => {
     let addresses = [];
-    return getAddresses(key, postcode, id)
+    return axios.get(`https://services.postcodeanywhere.co.uk/Capture/Interactive/Find/v1.00/json3ex.ws?Key=${encodeURIComponent(key)}&Country=GBR&Text=${addressStr}&Container=${addressId}&LanguagePreference=en&LastId=${addressId}&SearchFor=Everything&$block=true&$cache=true`)
       .then((response) => {
         if (response.data.Items && response.data.Items.length > 0 && response.data.Items[0].Error) {
-          const newError = addressErrors.invalidSearchError.replace('@', postcode);
+          const newError = addressErrors.invalidSearchError.replace('@', addressStr);
           setError(newError);
           return;
         }
 
         if (response.data.Items && response.data.Items.length === 0) {
-          const errorDescription =  addressErrors.invalidSearchError.replace('@', postcode);
+          const errorDescription =  addressErrors.invalidSearchError.replace('@', addressStr);
           setError(errorDescription);
           return;
         }
@@ -74,7 +75,7 @@ const PostcodeFinder = (props) => {
   const getAddressDetails = (address) => {
     if (address.Type === 'Address') {
       let newError = '';
-      setAddress(key, address.Id)
+      axios.get(`https://services.postcodeanywhere.co.uk/Capture/Interactive/Retrieve/v1.00/json3ex.ws?Key=${encodeURIComponent(key)}&Id=${address.Id}&$cache=true&$block=true&LastId=${address.Id}&SearchTerm=&field1format=${encodeURIComponent('{Latitude}')}&field2format=${encodeURIComponent('{Longitude}')}`)
         .then((response) => {
           if (response.data.Items && response.data.Items.length > 0) {
             const selectedAddress = response.data.Items[0];
@@ -94,7 +95,7 @@ const PostcodeFinder = (props) => {
             setError(newError);
             setAddressList([]);
             setPostcode(postalCode);
-            setSearchResult(getFormattedAddress(selectedAddress));
+            getFormattedAddress(selectedAddress);
             setSearchText('');
           }
         })
@@ -126,6 +127,13 @@ const PostcodeFinder = (props) => {
     }
   };
 
+  const handleFocusOut = (e) => {
+    e.preventDefault();
+    if (!loqateAddress) {
+      setError(addressErrors.requiredFieldError);
+    }
+  }
+
   return (
     <div className="postcode-finder">
       <div className="form-item">
@@ -142,12 +150,16 @@ const PostcodeFinder = (props) => {
             autoComplete="removeAutoCompletion"
             placeholder={placeholder}
             onChange={e => onHandleSearchInputChanged(e)}
+            onBlur={handleFocusOut}
             value={searchText}
             aria-required="true"
             aria-describedby="address-error"
             aria-invalid={!!error} />
           <span id="search-input" className="visually-hidden">{placeholder}</span>
         </label>
+        {
+          error ? <div id="address-error" className="error-ifo">{error}</div> : null
+        }
       </div>
       <div role="alert" className="visually-hidden">
         {addressList ? `${addressList.length} address Found` : null}
@@ -160,9 +172,6 @@ const PostcodeFinder = (props) => {
               getDetails={address => getAddressDetails(address)}
               handleKeyDown={(result, e) => onHandleAddressListKeyDown(result, e)} />
           ) : null
-      }
-      {
-        error ? <p id="address-error" className="error-info">{error}</p> : null
       }
     </div>
   );
