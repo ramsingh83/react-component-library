@@ -23,7 +23,7 @@ const Input = (props) => {
   useLayoutEffect(() => {
     setInputValue(value);
   }, [value]);
-  
+
   const handleOnInputChanged = (e) => {
     e.preventDefault();
     let newError = '';
@@ -39,7 +39,7 @@ const Input = (props) => {
   const handleFocusOut = (e) => {
     e.preventDefault();
     const inputPattern = new RegExp(pattern);
-    let newError = ''
+    let newError = '';
     if (value && inputPattern && !inputPattern.test(value)) {
       newError = 'Please provide valid data';
     } else if (!value && required) {
@@ -48,7 +48,7 @@ const Input = (props) => {
       newError = '';
     }
     setError(newError);
-  }
+  };
 
   return (
     <div className="form-item">
@@ -86,7 +86,7 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   minLength: PropTypes.number,
   pattern: PropTypes.string,
-  invalid: PropTypes.bool,
+  setInputValue: PropTypes.func,
   autoComplete: PropTypes.string,
   placeholder: PropTypes.string,
   inputRef: PropTypes.shape({}),

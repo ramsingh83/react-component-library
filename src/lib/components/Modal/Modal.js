@@ -29,8 +29,8 @@ const Modal = (props) => {
         ref={closeButton}
         aria-label="close"
         className="close-button"
-        onClick={(e) => closed(e)}
-        onKeyDown={(e) => closed(e)}>
+        onClick={e => closed(e)}
+        onKeyDown={e => closed(e)}>
         <Icon name="close" id="close" />
       </button>
       <div className="modal-content">{children}</div>

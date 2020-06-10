@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { DebounceInput } from 'react-debounce-input';
@@ -9,7 +9,9 @@ const PostcodeFinder = (props) => {
   const [addressList, setAddressList] = useState(null);
   const [error, setError] = useState('');
   const [loqateAddress, setLoqateAddress] = useState('');
-  
+
+  const searchRef = useRef(null);
+
   const {
     setSearchResult,
     setPostcode,
@@ -27,16 +29,16 @@ const PostcodeFinder = (props) => {
     addressKeyNames,
     addressErrors
   } = config;
-  
+
   /**
    * Format loqate result to get following address fields
    * Line1, Line2, Line3, Line4, Line5, City and PostalCode
    */
   const getFormattedAddress = (selectedAddress) => {
     const address = {};
-    addressKeyNames.forEach((key) => {
+    addressKeyNames.forEach((addressKey) => {
       if (selectedAddress) {
-        address[key] = selectedAddress[key];
+        address[addressKey] = selectedAddress[addressKey];
       }
     });
     setLoqateAddress(address);
@@ -54,7 +56,7 @@ const PostcodeFinder = (props) => {
         }
 
         if (response.data.Items && response.data.Items.length === 0) {
-          const errorDescription =  addressErrors.invalidSearchError.replace('@', addressStr);
+          const errorDescription = addressErrors.invalidSearchError.replace('@', addressStr);
           setError(errorDescription);
           return;
         }
@@ -89,9 +91,9 @@ const PostcodeFinder = (props) => {
             if (channelIsland.length && channelIsland.includes(areaCode)) {
               newError = addressErrors.channelIslandError;
             }
-            // TODO : Do we have to display address when have channelIsland/BritishForce ? If YES then
-            // extra check require. Default it does display address.
-            // Confirm with business.
+            // TODO : Do we have to display address when have channelIsland/BritishForce ?
+            // If YES then extra check require. Default is display address.
+            // *Confirm with business.
             setError(newError);
             setAddressList([]);
             setPostcode(postalCode);
@@ -99,7 +101,7 @@ const PostcodeFinder = (props) => {
             setSearchText('');
           }
         })
-        .catch((err) => {
+        .catch(() => {
           newError = addressErrors.apiDownError;
           setError(newError);
         });
@@ -132,7 +134,7 @@ const PostcodeFinder = (props) => {
     if (!loqateAddress) {
       setError(addressErrors.requiredFieldError);
     }
-  }
+  };
 
   return (
     <div className="postcode-finder">
@@ -140,12 +142,13 @@ const PostcodeFinder = (props) => {
         <label htmlFor="search-input">
           <span className="input-label">
             {label}
-            {required ? <span style={{color: 'red'}}>*</span> : ''}
+            {required ? <span className="mandatory">*</span> : ''}
             {children}
           </span>
           <DebounceInput
             debounceTimeout={500}
             id="search-input"
+            ref={searchRef}
             className={error ? 'invalid' : ''}
             autoComplete="removeAutoCompletion"
             placeholder={placeholder}
@@ -178,6 +181,7 @@ const PostcodeFinder = (props) => {
 };
 
 PostcodeFinder.propTypes = {
+  config: PropTypes.shape({}),
   placeholder: PropTypes.string,
   label: PropTypes.string.isRequired,
   setSearchResult: PropTypes.func.isRequired,

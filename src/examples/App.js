@@ -8,7 +8,6 @@ import {
   PostcodeFinder,
   RadioButton,
   Spinner,
-  Tooltip,
   SectionWrap
 } from '../lib';
 import Config from './config.json';
@@ -23,17 +22,15 @@ const items = [
 const App = () => {
   const [validateForm, setValidateForm] = useState(false);
   const [formAddress, setFormAddress] = useState('');
-  
-  const handleContacts = (contacts) => {
-    console.log(contacts);
-  };  
-  
+
+  const handleContacts = () => {};
+
   const setPostcode = () => {};
 
   const handleAddress = (address) => {
     setFormAddress(address);
-  }    
-  
+  };
+
   return (
     <div className="reactapps">
       <SectionWrap extraClasses="head">
@@ -41,13 +38,13 @@ const App = () => {
       </SectionWrap>
       <SectionWrap extraClasses="pattern">
         <h2>Input</h2>
-          <Input
-            label="Name"
-            inputId="input-id"
-            placeholder=""
-            inputValue=""
-            setInputValue={() => {}}
-            required />
+        <Input
+          label="Name"
+          inputId="input-id"
+          placeholder=""
+          inputValue=""
+          setInputValue={() => {}}
+          required />
 
         <h2>Address Finder</h2>
         <PostcodeFinder
@@ -79,7 +76,7 @@ const App = () => {
           phone=""
           validateContact={validateForm}
           setValues={handleContacts} />
-        
+
         <h2>Dropdown</h2>
         <Dropdown
           items={items}
@@ -91,23 +88,20 @@ const App = () => {
         <h2>RadioButton</h2>
         <RadioButton name="YES" id="yes-id" value="YES">YES</RadioButton>
         <RadioButton name="NO" id="no-id" value="NO">No</RadioButton>
-        
+
         <h2>Button:</h2>
         <Button
           styles="primary"
           handleClicked={() => setValidateForm(!validateForm)}>
           Submit
         </Button>
-        
+      </SectionWrap>
+      <SectionWrap extraClasses="confirm">
         <h2>Spinner</h2>
         <Spinner />
       </SectionWrap>
-      <SectionWrap extraClasses="confirm">
-        <h2>Tooltip</h2>
-        <Tooltip message="I am a tool tip" position="top">click me</Tooltip>
-      </SectionWrap>
     </div>
   );
-}
+};
 
 export default App;

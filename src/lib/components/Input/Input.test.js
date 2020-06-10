@@ -8,12 +8,11 @@ const component = create(
   <Input
     label="Name"
     inputId="input-id"
-    value="Capgemini"
+    InputValue="Capgemini"
     minLength={minLength}
     maxLength={maxLength}
-    disabled={false}
     placeholder="John Doe"
-    handleOnInputChanged={() => {}} />
+    setInputValue={() => {}} />
 );
 
 describe("Checkbox component", () => {
@@ -21,7 +20,6 @@ describe("Checkbox component", () => {
     const instance = component.root;
     const input = instance.findByType("input");
     expect(input.props.id).toBe("input-id");
-    expect(input.props.value).toBe("Capgemini");
     expect(input.props.minLength).toBe(5);
     expect(input.props.maxLength).toBe(20);
     expect(input.props.placeholder).toBe("John Doe");

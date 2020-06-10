@@ -6,7 +6,7 @@
  */
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+import { uniqueId } from 'lodash';
 import Icon from '../Icon/Icon';
 
 const Tooltip = (props) => {
@@ -15,13 +15,13 @@ const Tooltip = (props) => {
   const {
     position,
     message
-  } = props; 
+  } = props;
 
   const keyboardConstants = {
     enter: 13 // The 13 value is equivalent to the "Enter" or the "Return" key code
-  }
+  };
 
-  const tooltipMessageId = nanoid();
+  const tooltipMessageId = uniqueId('toolTip-');
 
   const handleToggleTooltip = (e) => {
     if (e.which !== keyboardConstants.enter || e.keyCode !== keyboardConstants.enter) {
@@ -29,15 +29,15 @@ const Tooltip = (props) => {
     }
     setDisplaytooltip(!displayTooltip);
     tooltipRef.current.focus();
-  }
+  };
 
   const handleKeyPressToggle = (e) => {
     e.preventDefault();
     if (e.which === keyboardConstants.enter || e.keyCode === keyboardConstants.enter) {
       handleToggleTooltip(e);
     }
-  }
-  
+  };
+
   return (
     <span
       className="tooltip">
@@ -74,7 +74,7 @@ const Tooltip = (props) => {
       }
     </span>
   );
-}
+};
 
 Tooltip.propTypes = {
   message: PropTypes.string.isRequired,

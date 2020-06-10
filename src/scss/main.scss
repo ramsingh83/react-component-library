@@ -1,0 +1,10 @@
+// Import common styling.
+
+@import 'variables';
+@import 'mixins';
+
+body {
+  font-family: chevin-medium, Helvetica, Arial, "Nimbus Sans L", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+}

@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const ContactDetails = ({
   title,
@@ -9,11 +10,10 @@ const ContactDetails = ({
   validateContact,
   setValues
 }) => {
-  
   const [contacts, setContacts] = useState({
-    email: email,
+    email,
     confirmEmail: email,
-    phone: phone,
+    phone,
     emailError: '',
     confirmEmailError: '',
     phoneError: ''
@@ -24,9 +24,9 @@ const ContactDetails = ({
   }, [contacts]);
 
   const [firstRender, setFirstRender] = useState(true);
-   
+
   const validate = () => {
-    let values = { ...contacts }
+    const values = { ...contacts };
     fields.forEach((field) => {
       const pattern = new RegExp(field.pattern);
       const value = values[field.key];
@@ -44,17 +44,15 @@ const ContactDetails = ({
   useLayoutEffect(() => {
     setFirstRender(false);
     if (!firstRender) {
-      validate();      
+      validate();
     }
   }, [validateContact]);
 
-  const setError = (key) => {
-    return contacts[`${key}Error`];
-  };
+  const setError = key => contacts[`${key}Error`];
 
   const handleOnInputChanged = (event) => {
     event.preventDefault();
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     const inputDetails = fields.find(input => input.key === name);
     if (!value) {
       if (inputDetails.required) {
@@ -70,8 +68,8 @@ const ContactDetails = ({
   };
 
   const handleFocusOut = (event) => {
-    event.preventDefault()
-    const {name, value} = event.target;
+    event.preventDefault();
+    const { name, value } = event.target;
     const inputs = fields.find(input => input.key === name);
     const pattern = new RegExp(inputs.pattern);
     if (value) {
@@ -85,9 +83,8 @@ const ContactDetails = ({
     } else {
       contacts[`${name}Error`] = '';
     }
-
     setContacts({ ...contacts, [name]: value });
-  }
+  };
 
   return (
     <fieldset>
@@ -95,35 +92,45 @@ const ContactDetails = ({
       <div>
         {
           fields.map(field => (
-            <React.Fragment key={field.key}>    
-            <div className="form-item">
-              <label htmlFor={field.key} className="input-label">
-                {field.label}
-                {field.required ? <span className="mandatory">*</span> : ''}
-                <input
-                  name={field.key}
-                  type="text"
-                  className={`form-input ${setError(field.key) ? 'invalid': ''}`}
-                  aria-describedby={`${field.key}-error`}
-                  aria-label={field.label}
-                  placeholder={field.placeholder}
-                  autoComplete={autoComplete || 'off'}
-                  onChange={handleOnInputChanged}
-                  onBlur={handleFocusOut}
-                  value={contacts[field.key] || ''}
-                  maxLength={field.maxLength}
-                  minLength={field.minLength}
-                  aria-required="true"
-                  aria-invalid={!!setError(field.key)} />
-              </label>
-              <div id={`${field.key}-error`} className="error-ifo">{setError(field.key)}</div>
-            </div>
+            <React.Fragment key={field.key}>
+              <div className="form-item">
+                <label htmlFor={field.key} className="input-label">
+                  {field.label}
+                  {field.required ? <span className="mandatory">*</span> : ''}
+                  <input
+                    name={field.key}
+                    type="text"
+                    className={`form-input ${setError(field.key) ? 'invalid' : ''}`}
+                    aria-describedby={`${field.key}-error`}
+                    aria-label={field.label}
+                    placeholder={field.placeholder}
+                    autoComplete={autoComplete || 'off'}
+                    onChange={handleOnInputChanged}
+                    onBlur={handleFocusOut}
+                    value={contacts[field.key] || ''}
+                    maxLength={field.maxLength}
+                    minLength={field.minLength}
+                    aria-required="true"
+                    aria-invalid={!!setError(field.key)} />
+                </label>
+                <div id={`${field.key}-error`} className="error-ifo">{setError(field.key)}</div>
+              </div>
             </React.Fragment>
           ))
         }
       </div>
     </fieldset>
   );
-}
+};
+
+ContactDetails.propTypes = {
+  title: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.string,
+  autoComplete: PropTypes.number,
+  fields: PropTypes.shape({}),
+  validateContact: PropTypes.bool,
+  setValues: PropTypes.func
+};
 
 export default ContactDetails;

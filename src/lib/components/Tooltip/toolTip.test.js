@@ -1,12 +1,8 @@
 import React from 'react';
-import { create } from "react-test-renderer";
+import { shallow } from 'enzyme';
 import Tooltip from './Tooltip';
 
-const component = create(
-  <Tooltip
-    message="I am a tooltip"
-    position="top" />
-);
+const component = shallow(<Tooltip message="I am a tooltip" position="top" />);
 
 describe('Tooltip component', () => {
   it('Should render Tooltip component', () => {

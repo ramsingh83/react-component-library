@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Modal from './index';
+import Modal from './Modal';
 
 const component = shallow(<Modal closed={() => {}} />);
 

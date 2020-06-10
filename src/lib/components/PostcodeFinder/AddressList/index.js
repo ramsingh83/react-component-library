@@ -10,7 +10,7 @@ const addressList = (props) => {
   return (
     <ul
       className="address-list form-item form-item-autocomplete ui-widget ui-autocomplete"
-      id="rml-redelivery-address-list">
+      id="address-list">
       {results && results.length > 0
         ? results.map((result) => {
           if (result.Text || result.Description) {
