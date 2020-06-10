@@ -50,10 +50,10 @@
     },
     "modulePathIgnorePatterns": [
       "<rootDir>/build/",
+      "<rootDir>/dist/",
       "<rootDir>/node_modules/",
-      "<rootDir>/coverage/",
-      "<rootDir>/e2e/"
-    ],
+      "<rootDir>/coverage/"
+      ],
     "setupFilesAfterEnv": [
       "<rootDir>/setupTests.js"
     ],
@@ -73,7 +73,9 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "react-debounce-input": "^3.2.0"
+    "react": "^16.9.0",
+    "react-debounce-input": "^3.2.0",
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
