@@ -1,9 +1,9 @@
 {
   "name": "react-shared-library",
   "version": "0.1.0",
-  "main": "dist/index.js",
+  "main": "js/index.js",
   "files": [
-    "dist",
+    "js",
     "README.md"
   ],
   "repository": {
@@ -13,8 +13,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-serve --open --port 3000",
     "error": "webpack --display-error-details",
-    "package": "cross-env NODE_ENV=production babel src/lib --out-dir dist --ignore **/*.test.js",
-    "prepackage": "mkdirp dist && rimraf dist && cross-env CI=true npm t",
+    "package": "cross-env NODE_ENV=production babel src/lib --out-dir js --ignore **/*.test.js",
+    "prepackage": "mkdirp js && rimraf js && cross-env CI=true npm t",
     "build": "cross-env NODE_ENV=production webpack",
     "prebuild": "mkdirp build && npm run clean && cross-env CI=true npm t",
     "lint": "eslint src --ext .js --ext .jsx",
@@ -73,9 +73,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "react": "^16.9.0",
-    "react-debounce-input": "^3.2.0",
-    "react-dom": "^16.9.0"
+    "react-debounce-input": "^3.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JS_BUILD_DIR="dist"
+JS_BUILD_DIR="js"
 DIST_REPO=${DIST_REPO-"ssh://git@andotbt.royalmailgroup.net:8000/rmg/react-shared-library-dist.git"}
 DIST_CLONE_LOCATION="dist"
 # Get latest commit message from development repository.
