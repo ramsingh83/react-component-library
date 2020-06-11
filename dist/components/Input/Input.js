@@ -99,7 +99,7 @@ var Input = function Input(props) {
     "aria-invalid": !!error
   })), /*#__PURE__*/_react.default.createElement("div", {
     id: "".concat(label, "-error"),
-    className: "error-ifo"
+    className: "error-info"
   }, error));
 };
 

@@ -74,7 +74,7 @@ const Input = (props) => {
           aria-required="true"
           aria-invalid={!!error} />
       </label>
-      <div id={`${label}-error`} className="error-ifo">{error}</div>
+      <div id={`${label}-error`} className="error-info">{error}</div>
     </div>
   );
 };

@@ -113,7 +113,7 @@ const ContactDetails = ({
                     aria-required="true"
                     aria-invalid={!!setError(field.key)} />
                 </label>
-                <div id={`${field.key}-error`} className="error-ifo">{setError(field.key)}</div>
+                <div id={`${field.key}-error`} className="error-info">{setError(field.key)}</div>
               </div>
             </React.Fragment>
           ))

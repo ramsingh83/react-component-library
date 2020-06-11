@@ -155,7 +155,7 @@ var ContactDetails = function ContactDetails(_ref) {
       "aria-invalid": !!setError(field.key)
     })), /*#__PURE__*/_react.default.createElement("div", {
       id: "".concat(field.key, "-error"),
-      className: "error-ifo"
+      className: "error-info"
     }, setError(field.key))));
   })));
 };

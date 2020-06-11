@@ -193,7 +193,7 @@ var PostcodeFinder = function PostcodeFinder(props) {
     className: "visually-hidden"
   }, placeholder)), error ? /*#__PURE__*/_react.default.createElement("div", {
     id: "address-error",
-    className: "error-ifo"
+    className: "error-info"
   }, error) : null), /*#__PURE__*/_react.default.createElement("div", {
     role: "alert",
     className: "visually-hidden"

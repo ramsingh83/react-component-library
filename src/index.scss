@@ -6,15 +6,17 @@
   flex-direction: column;
   width: 100%;
 
-  .back-info {
-    a {
-      cursor: pointer;
-    }
-  }
-
   .error-info {
     color: $error;
     margin-bottom: 16px;
+  }
+
+  .address-line {
+    display: block;
+  }
+
+  .mandatory {
+    color: $red-light;
   }
 
   .visually-hidden {

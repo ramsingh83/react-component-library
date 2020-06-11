@@ -32,7 +32,7 @@ const App = () => {
   };
 
   return (
-    <div className="reactapps">
+    <div className="reactapps app">
       <SectionWrap extraClasses="head">
         <h1>Component Library</h1>
       </SectionWrap>

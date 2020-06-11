@@ -161,7 +161,7 @@ const PostcodeFinder = (props) => {
           <span id="search-input" className="visually-hidden">{placeholder}</span>
         </label>
         {
-          error ? <div id="address-error" className="error-ifo">{error}</div> : null
+          error ? <div id="address-error" className="error-info">{error}</div> : null
         }
       </div>
       <div role="alert" className="visually-hidden">
