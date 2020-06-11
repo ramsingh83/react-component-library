@@ -27,7 +27,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 // Install dependencies and run tests generating reports.
-                nodejs('Node-8') {
+                nodejs('Node-12') {
                     // These npm commands are executed under Node 8 version.
                     sh 'npm install'
                     sh 'npm run lint'
