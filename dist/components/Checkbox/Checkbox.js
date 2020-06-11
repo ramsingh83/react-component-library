@@ -1,57 +1,41 @@
+"use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-const _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
-
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-const _react = _interopRequireDefault(require('react'));
+var _react = _interopRequireDefault(require("react"));
 
-const _propTypes = _interopRequireDefault(require('prop-types'));
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-const Checkbox = function Checkbox(_ref) {
-  const label = _ref.label;
-
-
-  const id = _ref.id;
-
-
-  const checked = _ref.checked;
-
-
-  const onHandleChange = _ref.onHandleChange;
-
-
-  const disabled = _ref.disabled;
-
-
-  const value = _ref.value;
-
-
-  const itemsRef = _ref.itemsRef;
-
-
-  const invalid = _ref.invalid;
-
-
-  const describedBy = _ref.describedBy;
-  return /* #__PURE__ */_react.default.createElement('div', {
-    className: 'form-item js-form-type-checkbox form-type-checkbox',
+var Checkbox = function Checkbox(_ref) {
+  var label = _ref.label,
+      id = _ref.id,
+      checked = _ref.checked,
+      onHandleChange = _ref.onHandleChange,
+      disabled = _ref.disabled,
+      value = _ref.value,
+      itemsRef = _ref.itemsRef,
+      invalid = _ref.invalid,
+      describedBy = _ref.describedBy;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "form-item js-form-type-checkbox form-type-checkbox",
     ref: itemsRef
-  }, /* #__PURE__ */_react.default.createElement('input', {
-    type: 'checkbox',
-    id,
-    'aria-invalid': !!invalid,
-    'aria-describedby': describedBy,
-    className: 'form-checkbox '.concat(invalid ? 'error' : ''),
-    checked,
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    id: id,
+    "aria-invalid": !!invalid,
+    "aria-describedby": describedBy,
+    className: "form-checkbox ".concat(invalid ? 'error' : ''),
+    checked: checked,
     onChange: onHandleChange,
-    disabled,
-    value
-  }), /* #__PURE__ */_react.default.createElement('label', {
-    className: 'option '.concat(disabled ? 'disabled' : ''),
+    disabled: disabled,
+    value: value
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    className: "option ".concat(disabled ? 'disabled' : ''),
     htmlFor: id
   }, label));
 };
@@ -67,5 +51,5 @@ Checkbox.propTypes = {
   invalid: _propTypes.default.bool,
   describedBy: _propTypes.default.string
 };
-const _default = Checkbox;
+var _default = Checkbox;
 exports.default = _default;

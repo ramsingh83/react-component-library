@@ -128,7 +128,7 @@ ContactDetails.propTypes = {
   email: PropTypes.string,
   phone: PropTypes.string,
   autoComplete: PropTypes.number,
-  fields: PropTypes.shape({}),
+  fields: PropTypes.arrayOf(PropTypes.shape({})),
   validateContact: PropTypes.bool,
   setValues: PropTypes.func
 };

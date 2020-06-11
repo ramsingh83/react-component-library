@@ -86,7 +86,7 @@ const App = () => {
           required />
 
         <h2>RadioButton</h2>
-        <RadioButton name="YES" id="yes-id" value="YES">YES</RadioButton>
+        <RadioButton name="YES" id="yes-id" value="YES">Yes</RadioButton>
         <RadioButton name="NO" id="no-id" value="NO">No</RadioButton>
 
         <h2>Button:</h2>

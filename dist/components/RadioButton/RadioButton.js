@@ -1,53 +1,39 @@
+"use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-const _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
-
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-const _react = _interopRequireDefault(require('react'));
+var _react = _interopRequireDefault(require("react"));
 
-const _propTypes = _interopRequireDefault(require('prop-types'));
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-const RadioButton = function RadioButton(props) {
-  const id = props.id;
-
-
-  const value = props.value;
-
-
-  const checked = props.checked;
-
-
-  const handleOptionChange = props.handleOptionChange;
-
-
-  const name = props.name;
-
-
-  const invalid = props.invalid;
-
-
-  const children = props.children;
-
-
-  const disabled = props.disabled;
-  return /* #__PURE__ */_react.default.createElement('div', {
-    className: 'form-item js-form-type-radio form-type-radio'
-  }, /* #__PURE__ */_react.default.createElement('input', {
-    type: 'radio',
-    id,
-    className: 'form-checkbox',
-    value,
-    checked,
+var RadioButton = function RadioButton(props) {
+  var id = props.id,
+      value = props.value,
+      checked = props.checked,
+      handleOptionChange = props.handleOptionChange,
+      name = props.name,
+      invalid = props.invalid,
+      children = props.children,
+      disabled = props.disabled;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "form-item js-form-type-radio form-type-radio"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "radio",
+    id: id,
+    className: "form-checkbox",
+    value: value,
+    checked: checked,
     disabled: disabled || undefined,
-    name,
+    name: name,
     onChange: handleOptionChange,
-    'aria-invalid': !!invalid
-  }), /* #__PURE__ */_react.default.createElement('label', {
-    className: 'option '.concat(invalid),
+    "aria-invalid": !!invalid
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    className: "option ".concat(invalid),
     htmlFor: id
   }, children));
 };
@@ -61,5 +47,5 @@ RadioButton.propTypes = {
   invalid: _propTypes.default.string,
   disabled: _propTypes.default.bool
 };
-const _default = RadioButton;
+var _default = RadioButton;
 exports.default = _default;

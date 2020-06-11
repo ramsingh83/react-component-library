@@ -1,85 +1,51 @@
+"use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-const _interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-const _interopRequireDefault = require('@babel/runtime/helpers/interopRequireDefault');
-
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-const _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/slicedToArray'));
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
-const _react = _interopRequireWildcard(require('react'));
+var _react = _interopRequireWildcard(require("react"));
 
-const _propTypes = _interopRequireDefault(require('prop-types'));
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-const Input = function Input(props) {
-  const label = props.label;
+var Input = function Input(props) {
+  var label = props.label,
+      inputValue = props.inputValue,
+      inputId = props.inputId,
+      children = props.children,
+      maxLength = props.maxLength,
+      minLength = props.minLength,
+      pattern = props.pattern,
+      placeholder = props.placeholder,
+      autoComplete = props.autoComplete,
+      inputRef = props.inputRef,
+      setInputValue = props.setInputValue,
+      required = props.required;
 
+  var _useState = (0, _react.useState)(inputValue || ''),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      value = _useState2[0],
+      setValue = _useState2[1];
 
-  const inputValue = props.inputValue;
+  var _useState3 = (0, _react.useState)(''),
+      _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
+      error = _useState4[0],
+      setError = _useState4[1];
 
-
-  const inputId = props.inputId;
-
-
-  const children = props.children;
-
-
-  const maxLength = props.maxLength;
-
-
-  const minLength = props.minLength;
-
-
-  const pattern = props.pattern;
-
-
-  const placeholder = props.placeholder;
-
-
-  const autoComplete = props.autoComplete;
-
-
-  const inputRef = props.inputRef;
-
-
-  const setInputValue = props.setInputValue;
-
-
-  const required = props.required;
-
-  const _useState = (0, _react.useState)(inputValue || '');
-
-
-  const _useState2 = (0, _slicedToArray2.default)(_useState, 2);
-
-
-  const value = _useState2[0];
-
-
-  const setValue = _useState2[1];
-
-  const _useState3 = (0, _react.useState)('');
-
-
-  const _useState4 = (0, _slicedToArray2.default)(_useState3, 2);
-
-
-  const error = _useState4[0];
-
-
-  const setError = _useState4[1];
-
-  (0, _react.useLayoutEffect)(() => {
+  (0, _react.useLayoutEffect)(function () {
     setInputValue(value);
   }, [value]);
 
-  const handleOnInputChanged = function handleOnInputChanged(e) {
+  var handleOnInputChanged = function handleOnInputChanged(e) {
     e.preventDefault();
-    let newError = '';
+    var newError = '';
 
     if (!e.target.value) {
       newError = 'This field is required';
@@ -91,10 +57,10 @@ const Input = function Input(props) {
     setError(newError);
   };
 
-  const handleFocusOut = function handleFocusOut(e) {
+  var handleFocusOut = function handleFocusOut(e) {
     e.preventDefault();
-    const inputPattern = new RegExp(pattern);
-    let newError = '';
+    var inputPattern = new RegExp(pattern);
+    var newError = '';
 
     if (value && inputPattern && !inputPattern.test(value)) {
       newError = 'Please provide valid data';
@@ -107,33 +73,33 @@ const Input = function Input(props) {
     setError(newError);
   };
 
-  return /* #__PURE__ */_react.default.createElement('div', {
-    className: 'form-item'
-  }, /* #__PURE__ */_react.default.createElement('label', {
-    className: 'input-label',
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "form-item"
+  }, /*#__PURE__*/_react.default.createElement("label", {
+    className: "input-label",
     htmlFor: inputId
-  }, label, required ? /* #__PURE__ */_react.default.createElement('span', {
-    className: 'mandatory'
-  }, '*') : '', children, /* #__PURE__ */_react.default.createElement('input', {
+  }, label, required ? /*#__PURE__*/_react.default.createElement("span", {
+    className: "mandatory"
+  }, "*") : '', children, /*#__PURE__*/_react.default.createElement("input", {
     id: inputId,
-    type: 'text',
-    tabIndex: '0',
+    type: "text",
+    tabIndex: "0",
     className: error ? 'invalid' : '',
     autoComplete: autoComplete || 'off',
-    'aria-describedby': ''.concat(label, '-error'),
-    'aria-label': label,
-    placeholder,
+    "aria-describedby": "".concat(label, "-error"),
+    "aria-label": label,
+    placeholder: placeholder,
     onChange: handleOnInputChanged,
     onBlur: handleFocusOut,
-    value,
+    value: value,
     ref: inputRef,
-    maxLength,
-    minLength,
-    'aria-required': 'true',
-    'aria-invalid': !!error
-  })), /* #__PURE__ */_react.default.createElement('div', {
-    id: ''.concat(label, '-error'),
-    className: 'error-ifo'
+    maxLength: maxLength,
+    minLength: minLength,
+    "aria-required": "true",
+    "aria-invalid": !!error
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    id: "".concat(label, "-error"),
+    className: "error-ifo"
   }, error));
 };
 
@@ -150,5 +116,5 @@ Input.propTypes = {
   inputRef: _propTypes.default.shape({}),
   required: _propTypes.default.bool
 };
-const _default = Input;
+var _default = Input;
 exports.default = _default;
