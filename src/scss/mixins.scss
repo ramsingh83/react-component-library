@@ -1,0 +1,25 @@
+// Media Queries.
+
+@mixin mobile {
+  @media #{$mobile-mq} {
+    @content;
+  }
+}
+
+@mixin mobile-max {
+  @media #{$mobile-mq-max} {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media #{$tablet-mq} {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media #{$desktop-mq} {
+    @content;
+  }
+}

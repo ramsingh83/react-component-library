@@ -1,11 +1,21 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Checkbox from './index';
+import { create } from "react-test-renderer";
+import Checkbox from './Checkbox';
 
-const component = shallow(<Checkbox id="user-accept-1" />);
+const component = create(
+  <Checkbox 
+    id="i-accept"
+    value="YES"
+    label="Are you developer"
+    disabled={false}
+    onHandleChange={() => {}} />
+  );
 
-describe('UserAcceptance component', () => {
-  it('Should render UserAcceptance component', () => {
-    expect(component.exists()).toEqual(true);
+describe("Checkbox component", () => {
+  test("it shows the correct props of checkbox", () => {
+    const instance = component.root;
+    const checkbox = instance.findByType("input");
+    expect(checkbox.props.value).toBe("YES");
+    expect(checkbox.props.disabled).toBe(false);
   });
 });

@@ -1,0 +1,35 @@
+// Style Guide
+
+// Palette Colours.
+$white: #fff;
+$black: #000;
+$red-light: #f00;
+$grey-lightest: #f5f5f5;
+$grey-light-bg: #ded5cc;
+$grey-light: #ccc;
+$placeholder-grey: #757778;
+$border-grey: #888;
+$green-background: #589f28;
+
+// Backgrounds.
+$hover-blue: #0892cb;
+$error: #da202a;
+$tooltip-color: #c00;
+$green-text-background: #70ad47;
+$error-background: #f1f1f1;
+$background: rgba(58, 63, 68, 0.5);
+$grey-background: #f5f5f5;
+
+// height/width/size variables
+$map-height: 23em;
+
+// Breakpoints
+$mobile-width: 20em;
+$mobile-max: 47.9375em;
+$tablet-width: 48em;
+$desktop-width: 64em;
+
+$mobile-mq: "screen and (min-width: #{$mobile-width})";
+$mobile-mq-max: "screen and (max-width: #{$mobile-max})";
+$tablet-mq: "screen and (min-width: #{$tablet-width})";
+$desktop-mq: "screen and (min-width: #{$desktop-width})";

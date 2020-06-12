@@ -1,0 +1,43 @@
+@import './scss/main';
+
+.app {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+
+  .error-info {
+    color: $error;
+    margin-bottom: 16px;
+  }
+
+  .address-line {
+    display: block;
+  }
+
+  .mandatory {
+    color: $red-light;
+  }
+
+  .visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+    word-wrap: normal;
+  }
+
+  .link-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+
+  .invalid:focus {
+    border: 1px solid $error;
+  }
+}

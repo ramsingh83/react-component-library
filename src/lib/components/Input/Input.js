@@ -1,58 +1,95 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const Input = (props) => {
   const {
     label,
-    value,
+    inputValue,
     inputId,
-    handleOnInputChanged,
     children,
     maxLength,
-    invalid,
+    minLength,
+    pattern,
     placeholder,
     autoComplete,
     inputRef,
-    describedBy,
+    setInputValue,
     required
   } = props;
 
+  const [value, setValue] = useState(inputValue || '');
+  const [error, setError] = useState('');
+
+  useLayoutEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
+  const handleOnInputChanged = (e) => {
+    e.preventDefault();
+    let newError = '';
+    if (!e.target.value) {
+      newError = 'This field is required';
+    } else {
+      newError = '';
+    }
+    setValue(e.target.value);
+    setError(newError);
+  };
+
+  const handleFocusOut = (e) => {
+    e.preventDefault();
+    const inputPattern = new RegExp(pattern);
+    let newError = '';
+    if (value && inputPattern && !inputPattern.test(value)) {
+      newError = 'Please provide valid data';
+    } else if (!value && required) {
+      newError = 'This field is required';
+    } else {
+      newError = '';
+    }
+    setError(newError);
+  };
+
   return (
     <div className="form-item">
-      <label htmlFor={inputId}>
-        <span className={`input-label ${required ? 'element-required' : ''}`}>{label}</span>
+      <label className="input-label" htmlFor={inputId}>
+        {label}
+        {required ? <span className="mandatory">*</span> : ''}
         {children}
         <input
           id={inputId}
           type="text"
           tabIndex="0"
-          className={invalid ? 'invalid' : ''}
+          className={error ? 'invalid' : ''}
           autoComplete={autoComplete || 'off'}
-          aria-describedby={describedBy}
+          aria-describedby={`${label}-error`}
           aria-label={label}
           placeholder={placeholder}
           onChange={handleOnInputChanged}
+          onBlur={handleFocusOut}
           value={value}
           ref={inputRef}
           maxLength={maxLength}
+          minLength={minLength}
           aria-required="true"
-          aria-invalid={!!invalid} />
+          aria-invalid={!!error} />
       </label>
+      <div id={`${label}-error`} className="error-info">{error}</div>
     </div>
   );
 };
 
 Input.propTypes = {
   label: PropTypes.string.isRequired,
-  handleOnInputChanged: PropTypes.func,
-  value: PropTypes.string,
+  inputValue: PropTypes.string,
   inputId: PropTypes.string.isRequired,
   maxLength: PropTypes.number,
-  invalid: PropTypes.bool,
+  minLength: PropTypes.number,
+  pattern: PropTypes.string,
+  setInputValue: PropTypes.func,
   autoComplete: PropTypes.string,
   placeholder: PropTypes.string,
   inputRef: PropTypes.shape({}),
-  describedBy: PropTypes.string,
   required: PropTypes.bool
 };
 export default Input;

@@ -1,57 +1,107 @@
-import React from "react";
+import React, { useState } from 'react';
 import {
   Button,
   Checkbox,
   ContactDetails,
   Dropdown,
-  Icon,
   Input,
+  PostcodeFinder,
   RadioButton,
   Spinner,
-  Tooltip
-} from "../lib";
+  SectionWrap
+} from '../lib';
+import Config from './config.json';
 
-const componentOptions = [
-  {key: "0", value: "--Select--"},
-  {key: "1", value: "ContactDetails"},
-  {key: "2", value: "PostcodeFinder"},
-  {key: "3", value: "Calendar"}
+const items = [
+  { id: '0', name: '--Select--' },
+  { id: '1', name: 'ContactDetails' },
+  { id: '2', name: 'PostcodeFinder' },
+  { id: '3', name: 'Calendar' }
 ];
 
-const App = () => (
-  <div style={{ width: 640, margin: "15px auto" }}>
-    <h1>Component Library</h1>
-    
-    <h2>Button:</h2>
-    <Button styles="primary">Click me</Button>
+const App = () => {
+  const [validateForm, setValidateForm] = useState(false);
+  const [formAddress, setFormAddress] = useState('');
 
-    <h2>Checckbox:</h2>
-    <Checkbox label="checkbox" />
+  const handleContacts = () => {};
 
-    <h2> Contact Details </h2>
-    <ContactDetails label="Email Address" placeholder="ram.singh@example.com" />
+  const setPostcode = () => {};
 
-    <h2>Dropdown</h2>
-    <Dropdown title="Select app" options={componentOptions} required />
+  const handleAddress = (address) => {
+    setFormAddress(address);
+  };
 
-    <h2>Input</h2>
-    <Input label="Input Label" required />
+  return (
+    <div className="reactapps app">
+      <SectionWrap extraClasses="head">
+        <h1>Component Library</h1>
+      </SectionWrap>
+      <SectionWrap extraClasses="pattern">
+        <h2>Input</h2>
+        <Input
+          label="Name"
+          inputId="input-id"
+          placeholder=""
+          inputValue=""
+          setInputValue={() => {}}
+          required />
 
-    <h2>RadioButton</h2>
-    <RadioButton name="YES" value="YES">YES</RadioButton>
-    <RadioButton name="NO" value="NO">No</RadioButton>
+        <h2>Address Finder</h2>
+        <PostcodeFinder
+          label="Address"
+          placeholder="start typing your address"
+          setPostcode={setPostcode}
+          setSearchResult={handleAddress}
+          config={Config.loqate}
+          required />
+        <div className="address-desc">
+          {
+            formAddress && Object.values(formAddress).filter(Boolean).map((val, index) => {
+              const key = `${index}-${val}`;
+              return (
+                <span className="address-line" key={key}>{val}</span>
+              );
+            })
+          }
+        </div>
 
-    <h2>Spinner</h2>
-    <Spinner />
+        <h2>Checckbox:</h2>
+        <Checkbox label="checkbox" id="check-id" onHandleChange={() => {}} />
 
-    <h2>Tooltip</h2>
-    <Tooltip message="I am a tool tip" position="top">click me</Tooltip>
+        <h2> Contact Details </h2>
+        <ContactDetails
+          title=""
+          fields={Config.contacts.fields}
+          email=""
+          phone=""
+          validateContact={validateForm}
+          setValues={handleContacts} />
 
-    <h2>Icon</h2>
-    <Icon>I am icon</Icon>
+        <h2>Dropdown</h2>
+        <Dropdown
+          items={items}
+          label="Dropdown label"
+          handleChange={() => {}}
+          handleBlur={() => {}}
+          required />
 
-    <h2>Modal</h2> 
-  </div>
-);
+        <h2>RadioButton</h2>
+        <RadioButton name="YES" id="yes-id" value="YES">Yes</RadioButton>
+        <RadioButton name="NO" id="no-id" value="NO">No</RadioButton>
+
+        <h2>Button:</h2>
+        <Button
+          styles="primary"
+          handleClicked={() => setValidateForm(!validateForm)}>
+          Submit
+        </Button>
+      </SectionWrap>
+      <SectionWrap extraClasses="confirm">
+        <h2>Spinner</h2>
+        <Spinner />
+      </SectionWrap>
+    </div>
+  );
+};
 
 export default App;

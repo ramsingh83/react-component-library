@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const Dropdown = ({
   handleChange,
-  id,
-  keyName,
-  options,
-  title,
+  handleBlur,
+  elementId,
+  items,
+  label,
   disabled,
   selectedValue,
   children,
@@ -16,56 +16,40 @@ const Dropdown = ({
   required
 }) => (
   <div className="form-item-select js-form-item form-item js-form-type-select form-type-select js-form-item-select">
-    <label className={`input-label ${required ? 'element-required' : ''}`} htmlFor={id}>
-      {title}
+    <label className="input-label" htmlFor={elementId}>
+      {label}
+      {required ? <span style={{ color: 'red' }}>*</span> : ''}
       {children}
     </label>
     <select
-      id={id}
-      className={`form-checkbox valid ${invalid ? 'error' : ''}`}
+      id={elementId}
+      className={invalid ? 'error' : ''}
       aria-invalid={!!invalid}
-      onBlur={() => {}}
+      onBlur={handleBlur}
       onChange={handleChange}
-      aria-label={title}
+      aria-label={label}
       ref={dropDownRef || undefined}
       aria-describedby={describedBy}
       aria-live="assertive"
       disabled={disabled}
       value={selectedValue}>
       {
-        options
-          ? options.map((option) => {
-            let displayValue = '';
-            let displayKey = '';
-            if (Array.isArray(keyName)) {
-              keyName.forEach((key) => {
-                displayValue = `${displayValue} ${option[key]}`;
-                displayKey = `${displayValue}`;
-              });
-            } else {
-              displayKey = option.key;
-              displayValue = option.value;
-            }
-            return (
-              <option
-                key={displayKey}
-                value={displayKey}
-                selected={selectedValue === displayValue}>
-                {displayValue}
-              </option>
-            );
-          }) : null
+        items.map(({ id, name }) => (
+          <option key={id} value={id}>
+            {name}
+          </option>
+        ))
       }
     </select>
   </div>
 );
 
 Dropdown.propTypes = {
-  keyName: PropTypes.arrayOf(PropTypes.string),
+  handleBlur: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({})),
-  title: PropTypes.string,
-  id: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.shape({})),
+  label: PropTypes.string,
+  elementId: PropTypes.string,
   disabled: PropTypes.bool,
   selectedValue: PropTypes.string,
   invalid: PropTypes.bool,
