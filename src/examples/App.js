@@ -41,12 +41,10 @@ const App = () => {
         <Input
           label="Name"
           inputId="input-id"
-          placeholder="1.01"
+          placeholder=""
           inputValue=""
           setInputValue={() => {}}
-          required>
-          <span>&pound;</span>
-        </Input>
+          required />
 
         <h2>Address Finder</h2>
         <PostcodeFinder

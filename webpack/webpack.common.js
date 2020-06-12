@@ -6,11 +6,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const commonPaths = require('./paths');
 
-const isDev = process.env.NODE_ENV === 'development';
-
-const entrymode = isDev ? commonPaths.entryPath : commonPaths.packageEntryPath;
 module.exports = {
-  entry: ['@babel/polyfill', entrymode],
+  entry: ['@babel/polyfill', commonPaths.entryPath],
   module: {
     rules: [
       {
@@ -56,8 +53,8 @@ module.exports = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    ...(isDev ? [new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: commonPaths.templatePath
-    })] : [])
+    })
   ]
 };
