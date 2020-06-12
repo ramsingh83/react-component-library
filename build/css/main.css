@@ -1,0 +1,24 @@
+/** [AIV_SHORT]  Build date: Friday, June 12th, 2020, 4:24:23 PM  **/ 
+ .spinner {
+  display: inline-block;
+  position: relative; }
+
+.spinner::after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 2px solid red;
+  border-color: red red red transparent;
+  animation: spinner 1.2s linear infinite; }
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+
+/*# sourceMappingURL=main.css.map*/ 
