@@ -1,9 +1,9 @@
 {
   "name": "react-shared-library",
   "version": "0.1.0",
-  "main": "build/js/main.bundle.js",
+  "main": "dist/index.js",
   "files": [
-    "build",
+    "dist",
     "README.md"
   ],
   "repository": {
