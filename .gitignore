@@ -23,8 +23,6 @@ yarn.lock*
 package-lock.json
 /build*
 /build/*
-/js*
-/js/*
 # Editor/IDE
 .idea
 packages/api/etc/
