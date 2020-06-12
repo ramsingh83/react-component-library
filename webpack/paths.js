@@ -7,6 +7,7 @@ module.exports = {
   root: path.resolve(__dirname, '../'),
   outputPath: path.resolve(__dirname, '../', 'build'),
   entryPath: path.resolve(__dirname, '../', 'src/index.js'),
+  packageEntryPath: path.resolve(__dirname, '../', 'src/lib/index.js'),
   templatePath: path.resolve(__dirname, '../', 'src/index.html'),
   imagesFolder: 'images',
   fontsFolder: 'fonts',
