@@ -21,14 +21,48 @@ const items = [
 
 const App = () => {
   const [validateForm, setValidateForm] = useState(false);
-  const [formAddress, setFormAddress] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    address: '',
+    postcode: '',
+    email: '',
+    phone: '',
+    language: '',
+    error: {
+      nameError: '',
+      addressError: '',
+      emailError: '',
+      phoneError: ''
+    }
+  });
 
-  const handleContacts = () => {};
+  const handleContacts = (contact) => {
+    const newData = { ...formData };
+    newData.email = contact.email;
+    newData.phone = contact.phone;
+    newData.error.emailError = contact.emailError;
+    newData.error.phoneError = contact.phoneError;
+    setFormData(newData);
+  };
 
-  const setPostcode = () => {};
+  const handleName = (value, error) => {
+    const newData = { ...formData };
+    newData.name = value;
+    newData.error.nameError = error;
+    setFormData(newData);
+  };
 
-  const handleAddress = (address) => {
-    setFormAddress(address);
+  const handleAddress = (address, error) => {
+    const newData = { ...formData };
+    newData.address = address;
+    newData.error.addressError = error;
+    setFormData(newData);
+  };
+
+  const handleCheckbox = (checked, value) => {
+    const newData = { ...formData };
+    if (checked) newData.language = value;
+    setFormData(newData);
   };
 
   return (
@@ -39,24 +73,24 @@ const App = () => {
       <SectionWrap extraClasses="pattern">
         <h2>Input</h2>
         <Input
-          label="Name"
+          config={Config.input}
           inputId="input-id"
-          placeholder=""
-          inputValue=""
-          setInputValue={() => {}}
-          required />
+          inputValue={formData.name}
+          setInputValue={handleName}
+          validateInput={validateForm} />
 
         <h2>Address Finder</h2>
         <PostcodeFinder
           label="Address"
           placeholder="start typing your address"
-          setPostcode={setPostcode}
           setSearchResult={handleAddress}
           config={Config.loqate}
+          validateInput={validateForm}
           required />
         <div className="address-desc">
           {
-            formAddress && Object.values(formAddress).filter(Boolean).map((val, index) => {
+            formData.address
+            && Object.values(formData.address).filter(Boolean).map((val, index) => {
               const key = `${index}-${val}`;
               return (
                 <span className="address-line" key={key}>{val}</span>
@@ -65,16 +99,13 @@ const App = () => {
           }
         </div>
 
-        <h2>Checckbox:</h2>
-        <Checkbox label="checkbox" id="check-id" onHandleChange={() => {}} />
-
         <h2> Contact Details </h2>
         <ContactDetails
           title=""
           fields={Config.contacts.fields}
           email=""
           phone=""
-          validateContact={validateForm}
+          validateInput={validateForm}
           setValues={handleContacts} />
 
         <h2>Dropdown</h2>
@@ -89,12 +120,19 @@ const App = () => {
         <RadioButton name="YES" id="yes-id" value="YES">Yes</RadioButton>
         <RadioButton name="NO" id="no-id" value="NO">No</RadioButton>
 
+        <h2>Checckbox:</h2>
+        <Checkbox
+          label="Language"
+          value="en"
+          id="check-id"
+          setInputValue={handleCheckbox} />
         <h2>Button:</h2>
         <Button
           styles="primary"
           handleClicked={() => setValidateForm(!validateForm)}>
           Submit
         </Button>
+
       </SectionWrap>
       <SectionWrap extraClasses="confirm">
         <h2>Spinner</h2>

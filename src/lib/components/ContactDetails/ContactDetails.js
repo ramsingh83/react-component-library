@@ -6,16 +6,13 @@ const ContactDetails = ({
   email,
   phone,
   fields,
-  autoComplete,
-  validateContact,
+  validateInput,
   setValues
 }) => {
   const [contacts, setContacts] = useState({
     email,
-    confirmEmail: email,
     phone,
     emailError: '',
-    confirmEmailError: '',
     phoneError: ''
   });
 
@@ -46,7 +43,7 @@ const ContactDetails = ({
     if (!firstRender) {
       validate();
     }
-  }, [validateContact]);
+  }, [validateInput]);
 
   const setError = key => contacts[`${key}Error`];
 
@@ -104,7 +101,7 @@ const ContactDetails = ({
                     aria-describedby={`${field.key}-error`}
                     aria-label={field.label}
                     placeholder={field.placeholder}
-                    autoComplete={autoComplete || 'off'}
+                    autoComplete={field.autoComplete || 'off'}
                     onChange={handleOnInputChanged}
                     onBlur={handleFocusOut}
                     value={contacts[field.key] || ''}
@@ -127,9 +124,8 @@ ContactDetails.propTypes = {
   title: PropTypes.string,
   email: PropTypes.string,
   phone: PropTypes.string,
-  autoComplete: PropTypes.number,
   fields: PropTypes.arrayOf(PropTypes.shape({})),
-  validateContact: PropTypes.bool,
+  validateInput: PropTypes.bool,
   setValues: PropTypes.func
 };
 
