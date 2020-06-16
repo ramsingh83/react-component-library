@@ -16,39 +16,62 @@ var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var Input = function Input(props) {
-  var label = props.label,
+  var config = props.config,
       inputValue = props.inputValue,
       inputId = props.inputId,
       children = props.children,
-      maxLength = props.maxLength,
-      minLength = props.minLength,
-      pattern = props.pattern,
-      placeholder = props.placeholder,
-      autoComplete = props.autoComplete,
       inputRef = props.inputRef,
       setInputValue = props.setInputValue,
-      required = props.required;
+      validateInput = props.validateInput;
 
   var _useState = (0, _react.useState)(inputValue || ''),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
       value = _useState2[0],
       setValue = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(''),
+  var _useState3 = (0, _react.useState)(true),
       _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-      error = _useState4[0],
-      setError = _useState4[1];
+      firstRender = _useState4[0],
+      setFirstRender = _useState4[1];
+
+  var _useState5 = (0, _react.useState)(''),
+      _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
+      error = _useState6[0],
+      setError = _useState6[1];
 
   (0, _react.useLayoutEffect)(function () {
-    setInputValue(value);
-  }, [value]);
+    setInputValue(value, error);
+  }, [value, error]);
+
+  var validate = function validate() {
+    var inputPattern = new RegExp(config.pattern);
+    var newError = '';
+
+    if (value && inputPattern && !inputPattern.test(value)) {
+      newError = config.invalidError;
+    } else if (!value && config.required) {
+      newError = config.emptyError;
+    } else {
+      newError = '';
+    }
+
+    setError(newError);
+  };
+
+  (0, _react.useLayoutEffect)(function () {
+    setFirstRender(false);
+
+    if (!firstRender) {
+      validate();
+    }
+  }, [validateInput]);
 
   var handleOnInputChanged = function handleOnInputChanged(e) {
     e.preventDefault();
     var newError = '';
 
     if (!e.target.value) {
-      newError = 'This field is required';
+      newError = config.emptyError;
     } else {
       newError = '';
     }
@@ -59,13 +82,13 @@ var Input = function Input(props) {
 
   var handleFocusOut = function handleFocusOut(e) {
     e.preventDefault();
-    var inputPattern = new RegExp(pattern);
+    var inputPattern = new RegExp(config.pattern);
     var newError = '';
 
     if (value && inputPattern && !inputPattern.test(value)) {
-      newError = 'Please provide valid data';
-    } else if (!value && required) {
-      newError = 'This field is required';
+      newError = config.invalidError;
+    } else if (!value && config.required) {
+      newError = config.emptyError;
     } else {
       newError = '';
     }
@@ -78,43 +101,38 @@ var Input = function Input(props) {
   }, /*#__PURE__*/_react.default.createElement("label", {
     className: "input-label",
     htmlFor: inputId
-  }, label, required ? /*#__PURE__*/_react.default.createElement("span", {
+  }, config.label, config.required ? /*#__PURE__*/_react.default.createElement("span", {
     className: "mandatory"
   }, "*") : '', children, /*#__PURE__*/_react.default.createElement("input", {
     id: inputId,
     type: "text",
     tabIndex: "0",
     className: error ? 'invalid' : '',
-    autoComplete: autoComplete || 'off',
-    "aria-describedby": "".concat(label, "-error"),
-    "aria-label": label,
-    placeholder: placeholder,
+    autoComplete: config.autoComplete || 'off',
+    "aria-describedby": "".concat(config.label, "-error"),
+    "aria-label": config.label,
+    placeholder: config.placeholder,
     onChange: handleOnInputChanged,
     onBlur: handleFocusOut,
     value: value,
     ref: inputRef,
-    maxLength: maxLength,
-    minLength: minLength,
+    maxLength: config.maxLength,
+    minLength: config.minLength,
     "aria-required": "true",
     "aria-invalid": !!error
   })), /*#__PURE__*/_react.default.createElement("div", {
-    id: "".concat(label, "-error"),
+    id: "".concat(config.label, "-error"),
     className: "error-info"
   }, error));
 };
 
 Input.propTypes = {
-  label: _propTypes.default.string.isRequired,
+  config: _propTypes.default.shape({}),
   inputValue: _propTypes.default.string,
   inputId: _propTypes.default.string.isRequired,
-  maxLength: _propTypes.default.number,
-  minLength: _propTypes.default.number,
-  pattern: _propTypes.default.string,
   setInputValue: _propTypes.default.func,
-  autoComplete: _propTypes.default.string,
-  placeholder: _propTypes.default.string,
   inputRef: _propTypes.default.shape({}),
-  required: _propTypes.default.bool
+  validateInput: _propTypes.default.bool
 };
 var _default = Input;
 exports.default = _default;
