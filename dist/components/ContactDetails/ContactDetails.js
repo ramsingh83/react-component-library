@@ -26,16 +26,13 @@ var ContactDetails = function ContactDetails(_ref) {
       email = _ref.email,
       phone = _ref.phone,
       fields = _ref.fields,
-      autoComplete = _ref.autoComplete,
-      validateContact = _ref.validateContact,
+      validateInput = _ref.validateInput,
       setValues = _ref.setValues;
 
   var _useState = (0, _react.useState)({
     email: email,
-    confirmEmail: email,
     phone: phone,
     emailError: '',
-    confirmEmailError: '',
     phoneError: ''
   }),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -75,7 +72,7 @@ var ContactDetails = function ContactDetails(_ref) {
     if (!firstRender) {
       validate();
     }
-  }, [validateContact]);
+  }, [validateInput]);
 
   var setError = function setError(key) {
     return contacts["".concat(key, "Error")];
@@ -145,7 +142,7 @@ var ContactDetails = function ContactDetails(_ref) {
       "aria-describedby": "".concat(field.key, "-error"),
       "aria-label": field.label,
       placeholder: field.placeholder,
-      autoComplete: autoComplete || 'off',
+      autoComplete: field.autoComplete || 'off',
       onChange: handleOnInputChanged,
       onBlur: handleFocusOut,
       value: contacts[field.key] || '',
@@ -164,9 +161,8 @@ ContactDetails.propTypes = {
   title: _propTypes.default.string,
   email: _propTypes.default.string,
   phone: _propTypes.default.string,
-  autoComplete: _propTypes.default.number,
   fields: _propTypes.default.arrayOf(_propTypes.default.shape({})),
-  validateContact: _propTypes.default.bool,
+  validateInput: _propTypes.default.bool,
   setValues: _propTypes.default.func
 };
 var _default = ContactDetails;

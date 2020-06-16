@@ -32,29 +32,53 @@ var PostcodeFinder = function PostcodeFinder(props) {
       addressList = _useState4[0],
       setAddressList = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(''),
+  var _useState5 = (0, _react.useState)(true),
       _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
-      error = _useState6[0],
-      setError = _useState6[1];
+      firstRender = _useState6[0],
+      setFirstRender = _useState6[1];
 
   var _useState7 = (0, _react.useState)(''),
       _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
-      loqateAddress = _useState8[0],
-      setLoqateAddress = _useState8[1];
+      error = _useState8[0],
+      setError = _useState8[1];
+
+  var _useState9 = (0, _react.useState)(null),
+      _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
+      loqateAddress = _useState10[0],
+      setLoqateAddress = _useState10[1];
 
   var searchRef = (0, _react.useRef)(null);
   var setSearchResult = props.setSearchResult,
-      setPostcode = props.setPostcode,
       label = props.label,
       placeholder = props.placeholder,
       children = props.children,
       required = props.required,
-      config = props.config;
+      config = props.config,
+      validateInput = props.validateInput;
   var channelIsland = config.channelIsland,
       britishForce = config.britishForce,
       key = config.key,
       addressKeyNames = config.addressKeyNames,
       addressErrors = config.addressErrors;
+  (0, _react.useLayoutEffect)(function () {
+    setSearchResult(loqateAddress, error);
+  }, [loqateAddress, error]);
+
+  var validate = function validate() {
+    if (!loqateAddress) {
+      setError(addressErrors.requiredFieldError);
+    } else if (loqateAddress && error === addressErrors.requiredFieldError) {
+      setError('');
+    }
+  };
+
+  (0, _react.useLayoutEffect)(function () {
+    setFirstRender(false);
+
+    if (!firstRender) {
+      validate();
+    }
+  }, [validateInput]);
   /**
    * Format loqate result to get following address fields
    * Line1, Line2, Line3, Line4, Line5, City and PostalCode
@@ -68,7 +92,6 @@ var PostcodeFinder = function PostcodeFinder(props) {
       }
     });
     setLoqateAddress(address);
-    setSearchResult(address);
   };
 
   var getAddressList = function getAddressList(addressStr, addressId) {
@@ -121,7 +144,6 @@ var PostcodeFinder = function PostcodeFinder(props) {
 
           setError(newError);
           setAddressList([]);
-          setPostcode(postalCode);
           getFormattedAddress(selectedAddress);
           setSearchText('');
         }
@@ -130,6 +152,7 @@ var PostcodeFinder = function PostcodeFinder(props) {
         setError(newError);
       });
 
+      searchRef.current.focus();
       return;
     }
 
@@ -144,6 +167,8 @@ var PostcodeFinder = function PostcodeFinder(props) {
 
   var onHandleSearchInputChanged = function onHandleSearchInputChanged(e) {
     if (e.target.value) {
+      setLoqateAddress(null);
+      setError('');
       setSearchText(e.target.value);
       getAddressList(e.target.value);
     }
@@ -158,7 +183,7 @@ var PostcodeFinder = function PostcodeFinder(props) {
   var handleFocusOut = function handleFocusOut(e) {
     e.preventDefault();
 
-    if (!loqateAddress) {
+    if (!loqateAddress && !addressList) {
       setError(addressErrors.requiredFieldError);
     }
   };
@@ -176,7 +201,7 @@ var PostcodeFinder = function PostcodeFinder(props) {
   }, "*") : '', children), /*#__PURE__*/_react.default.createElement(_reactDebounceInput.DebounceInput, {
     debounceTimeout: 500,
     id: "search-input",
-    ref: searchRef,
+    inputRef: searchRef,
     className: error ? 'invalid' : '',
     autoComplete: "removeAutoCompletion",
     placeholder: placeholder,
@@ -213,7 +238,7 @@ PostcodeFinder.propTypes = {
   placeholder: _propTypes.default.string,
   label: _propTypes.default.string.isRequired,
   setSearchResult: _propTypes.default.func.isRequired,
-  setPostcode: _propTypes.default.func.isRequired,
+  validateInput: _propTypes.default.func.isRequired,
   required: _propTypes.default.bool
 };
 var _default = PostcodeFinder;

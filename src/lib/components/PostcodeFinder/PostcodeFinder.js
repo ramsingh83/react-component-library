@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { DebounceInput } from 'react-debounce-input';
@@ -7,19 +7,20 @@ import AddressList from './AddressList';
 const PostcodeFinder = (props) => {
   const [searchText, setSearchText] = useState('');
   const [addressList, setAddressList] = useState(null);
+  const [firstRender, setFirstRender] = useState(true);
   const [error, setError] = useState('');
-  const [loqateAddress, setLoqateAddress] = useState('');
+  const [loqateAddress, setLoqateAddress] = useState(null);
 
   const searchRef = useRef(null);
 
   const {
     setSearchResult,
-    setPostcode,
     label,
     placeholder,
     children,
     required,
-    config
+    config,
+    validateInput
   } = props;
 
   const {
@@ -30,6 +31,24 @@ const PostcodeFinder = (props) => {
     addressErrors
   } = config;
 
+  useLayoutEffect(() => {
+    setSearchResult(loqateAddress, error);
+  }, [loqateAddress, error]);
+
+  const validate = () => {
+    if (!loqateAddress) {
+      setError(addressErrors.requiredFieldError);
+    } else if (loqateAddress && error === addressErrors.requiredFieldError) {
+      setError('');
+    }
+  };
+
+  useLayoutEffect(() => {
+    setFirstRender(false);
+    if (!firstRender) {
+      validate();
+    }
+  }, [validateInput]);
   /**
    * Format loqate result to get following address fields
    * Line1, Line2, Line3, Line4, Line5, City and PostalCode
@@ -42,7 +61,6 @@ const PostcodeFinder = (props) => {
       }
     });
     setLoqateAddress(address);
-    setSearchResult(address);
   };
 
   const getAddressList = (addressStr, addressId) => {
@@ -96,7 +114,6 @@ const PostcodeFinder = (props) => {
             // *Confirm with business.
             setError(newError);
             setAddressList([]);
-            setPostcode(postalCode);
             getFormattedAddress(selectedAddress);
             setSearchText('');
           }
@@ -105,6 +122,7 @@ const PostcodeFinder = (props) => {
           newError = addressErrors.apiDownError;
           setError(newError);
         });
+      searchRef.current.focus();
       return;
     }
     getAddressList(address, address.Id);
@@ -118,6 +136,8 @@ const PostcodeFinder = (props) => {
 
   const onHandleSearchInputChanged = (e) => {
     if (e.target.value) {
+      setLoqateAddress(null);
+      setError('');
       setSearchText(e.target.value);
       getAddressList(e.target.value);
     }
@@ -131,7 +151,7 @@ const PostcodeFinder = (props) => {
 
   const handleFocusOut = (e) => {
     e.preventDefault();
-    if (!loqateAddress) {
+    if (!loqateAddress && !addressList) {
       setError(addressErrors.requiredFieldError);
     }
   };
@@ -148,7 +168,7 @@ const PostcodeFinder = (props) => {
           <DebounceInput
             debounceTimeout={500}
             id="search-input"
-            ref={searchRef}
+            inputRef={searchRef}
             className={error ? 'invalid' : ''}
             autoComplete="removeAutoCompletion"
             placeholder={placeholder}
@@ -185,7 +205,7 @@ PostcodeFinder.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string.isRequired,
   setSearchResult: PropTypes.func.isRequired,
-  setPostcode: PropTypes.func.isRequired,
+  validateInput: PropTypes.func.isRequired,
   required: PropTypes.bool
 };
 
