@@ -49,5 +49,20 @@
     "emptyError":"Please enter name",
     "invalidError": "Please enter valid name",
     "pattern": "^[ A-Za-z.,'-]*$"
+  },
+  "radioButton": {
+    "emptyError":"Please choose a radio button",
+    "fields": [
+      {
+        "id": "radio-1",
+        "value": "radio1",
+        "label": "Radio button 1"
+      },
+      {
+        "id": "radio-2",
+        "value": "radio2",
+        "label": "Radio button 2"
+      }
+    ]
   }
 }
