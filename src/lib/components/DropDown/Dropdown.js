@@ -18,7 +18,7 @@ const Dropdown = ({
   <div className="form-item-select js-form-item form-item js-form-type-select form-type-select js-form-item-select">
     <label className="input-label" htmlFor={elementId}>
       {label}
-      {required ? <span style={{ color: 'red' }}>*</span> : ''}
+      {required ? <span className="mandatory">*</span> : ''}
       {children}
     </label>
     <select

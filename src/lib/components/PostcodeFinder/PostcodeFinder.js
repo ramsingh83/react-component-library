@@ -178,7 +178,7 @@ const PostcodeFinder = (props) => {
             aria-required="true"
             aria-describedby="address-error"
             aria-invalid={!!error} />
-          <span id="search-input" className="visually-hidden">{placeholder}</span>
+          <span id="search-input-help" className="visually-hidden">{placeholder}</span>
         </label>
         {
           error ? <div id="address-error" className="error-info">{error}</div> : null
