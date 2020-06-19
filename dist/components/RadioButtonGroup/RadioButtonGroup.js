@@ -51,7 +51,7 @@ var RadioButtonGroup = function RadioButtonGroup(props) {
   };
 
   (0, _react.useLayoutEffect)(function () {
-    setRadioButtonValue(value);
+    setRadioButtonValue(value); // console.log(value)
   }, [value]);
   (0, _react.useLayoutEffect)(function () {
     setValidationOnFirstRender(false);
@@ -75,6 +75,7 @@ var RadioButtonGroup = function RadioButtonGroup(props) {
       id: field.id,
       className: "form-checkbox",
       value: field.value,
+      checked: value === field.value,
       disabled: field.disabled || undefined,
       name: name,
       onChange: handleOptionChange,

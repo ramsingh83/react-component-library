@@ -51,6 +51,7 @@ const RadioButtonGroup = (props) => {
               id={field.id}
               className="form-checkbox"
               value={field.value}
+              checked={value === field.value}
               disabled={field.disabled || undefined}
               name={name}
               onChange={handleOptionChange}
