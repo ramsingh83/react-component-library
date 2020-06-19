@@ -30,9 +30,7 @@ var Dropdown = function Dropdown(_ref) {
     className: "input-label",
     htmlFor: elementId
   }, label, required ? /*#__PURE__*/_react.default.createElement("span", {
-    style: {
-      color: 'red'
-    }
+    className: "mandatory"
   }, "*") : '', children), /*#__PURE__*/_react.default.createElement("select", {
     id: elementId,
     className: invalid ? 'error' : '',

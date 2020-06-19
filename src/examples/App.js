@@ -6,7 +6,7 @@ import {
   Dropdown,
   Input,
   PostcodeFinder,
-  RadioButton,
+  RadioButtonGroup,
   Spinner,
   SectionWrap
 } from '../lib';
@@ -28,11 +28,13 @@ const App = () => {
     email: '',
     phone: '',
     language: '',
+    radioButtonValue: '',
     error: {
       nameError: '',
       addressError: '',
       emailError: '',
-      phoneError: ''
+      phoneError: '',
+      radioButtonError: ''
     }
   });
 
@@ -62,6 +64,12 @@ const App = () => {
   const handleCheckbox = (checked, value) => {
     const newData = { ...formData };
     if (checked) newData.language = value;
+    setFormData(newData);
+  };
+
+  const handleRadioButton = (value) => {
+    const newData = { ...formData };
+    newData.radioButtonValue = value;
     setFormData(newData);
   };
 
@@ -116,9 +124,12 @@ const App = () => {
           handleBlur={() => {}}
           required />
 
-        <h2>RadioButton</h2>
-        <RadioButton name="YES" id="yes-id" value="YES">Yes</RadioButton>
-        <RadioButton name="NO" id="no-id" value="NO">No</RadioButton>
+        <h2>RadioButtonGroup</h2>
+        <RadioButtonGroup
+          config={Config.radioButton}
+          name="radio-button-group"
+          setRadioButtonValue={() => handleRadioButton}
+          initialValidation={validateForm} />
 
         <h2>Checckbox:</h2>
         <Checkbox

@@ -77,8 +77,7 @@ const Input = (props) => {
           type="text"
           tabIndex="0"
           className={error ? 'invalid' : ''}
-          autoComplete={config.autoComplete || 'off'}
-          aria-describedby={`${config.label}-error`}
+          aria-describedby={`${inputId}-error`}
           aria-label={config.label}
           placeholder={config.placeholder}
           onChange={handleOnInputChanged}
@@ -90,7 +89,7 @@ const Input = (props) => {
           aria-required="true"
           aria-invalid={!!error} />
       </label>
-      <div id={`${config.label}-error`} className="error-info">{error}</div>
+      <div id={`${inputId}-error`} className="error-info">{error}</div>
     </div>
   );
 };

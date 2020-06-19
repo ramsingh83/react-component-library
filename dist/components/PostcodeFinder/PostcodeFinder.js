@@ -214,7 +214,7 @@ var PostcodeFinder = function PostcodeFinder(props) {
     "aria-describedby": "address-error",
     "aria-invalid": !!error
   }), /*#__PURE__*/_react.default.createElement("span", {
-    id: "search-input",
+    id: "search-input-help",
     className: "visually-hidden"
   }, placeholder)), error ? /*#__PURE__*/_react.default.createElement("div", {
     id: "address-error",
