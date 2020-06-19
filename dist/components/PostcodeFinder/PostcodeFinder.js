@@ -203,7 +203,6 @@ var PostcodeFinder = function PostcodeFinder(props) {
     id: "search-input",
     inputRef: searchRef,
     className: error ? 'invalid' : '',
-    autoComplete: "removeAutoCompletion",
     placeholder: placeholder,
     onChange: function onChange(e) {
       return onHandleSearchInputChanged(e);
