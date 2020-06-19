@@ -27,7 +27,6 @@ const RadioButtonGroup = (props) => {
 
   useLayoutEffect(() => {
     setRadioButtonValue(value);
-    // console.log(value)
   }, [value]);
 
   useLayoutEffect(() => {
