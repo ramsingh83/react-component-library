@@ -37,19 +37,15 @@ const RadioButtonGroup = (props) => {
   }, [initialValidation]);
 
   const handleOptionChange = (e) => {
-    let newError = '';
-    if (!e.target.value) {
-      newError = config.emptyError;
-    }
     setValue(e.target.value);
-    setError(newError);
+    setError('');
   };
 
   return (
     <React.Fragment>
       {
         config.fields.map(field => (
-          <div className="form-item js-form-type-radio form-type-radio" key={field.key}>
+          <div className="form-item js-form-type-radio form-type-radio" key={field.id}>
             <input
               type="radio"
               id={field.id}
