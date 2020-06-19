@@ -170,7 +170,6 @@ const PostcodeFinder = (props) => {
             id="search-input"
             inputRef={searchRef}
             className={error ? 'invalid' : ''}
-            autoComplete="removeAutoCompletion"
             placeholder={placeholder}
             onChange={e => onHandleSearchInputChanged(e)}
             onBlur={handleFocusOut}

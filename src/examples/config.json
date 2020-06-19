@@ -62,6 +62,11 @@
         "id": "radio-2",
         "value": "radio2",
         "label": "Radio button 2"
+      },
+      {
+        "id": "radio-3",
+        "value": "radio3",
+        "label": "Radio button 3"
       }
     ]
   }

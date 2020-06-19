@@ -7,6 +7,7 @@ import {
   Input,
   PostcodeFinder,
   RadioButtonGroup,
+  RadioButton,
   Spinner,
   SectionWrap
 } from '../lib';
@@ -128,8 +129,13 @@ const App = () => {
         <RadioButtonGroup
           config={Config.radioButton}
           name="radio-button-group"
-          setRadioButtonValue={() => handleRadioButton}
+          defaultValue="radio2"
+          setRadioButtonValue={value => handleRadioButton(value)}
           initialValidation={validateForm} />
+
+        <h2>RadioButton</h2>
+        <RadioButton name="YES" id="yes-id" value="YES">Yes</RadioButton>
+        <RadioButton name="NO" id="no-id" value="NO">No</RadioButton>
 
         <h2>Checckbox:</h2>
         <Checkbox
