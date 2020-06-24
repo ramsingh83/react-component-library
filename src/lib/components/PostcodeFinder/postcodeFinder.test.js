@@ -17,7 +17,7 @@ const customProps = {
   required: true
 };
 
-describe('Component should render with its relevent props', () => {
+describe('PostcodeFinder component functionalities', () => {
   let wrapper;
 
   function mockApiCall(mockResponse) {
@@ -35,7 +35,7 @@ describe('Component should render with its relevent props', () => {
     wrapper = mountComponent(customProps);
   });
 
-  it('Should render DeliveryDayChange component with props', () => {
+  it('Should render PostcodeFinder component with props', () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
