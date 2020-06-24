@@ -1,8 +1,7 @@
 import React from 'react';
 import { create } from 'react-test-renderer';
 import Input from './Input';
-import Config from '../../../examples/config.json';
-
+import Config from '../../../config.json';
 
 const component = create(
   <Input

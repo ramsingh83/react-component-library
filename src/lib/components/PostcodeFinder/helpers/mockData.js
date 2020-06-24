@@ -1,0 +1,160 @@
+export const PCA_PAYLOADS = {
+  invalidSearch: {
+    Items: []
+  },
+  addressListBritishForce: {
+    Items: [
+      {
+        Id: 'GB|RM|A|99000038',
+        Type: 'Address',
+        Text: 'BFPO 61',
+        Highlight: '0-7',
+        Description: 'BFPO, BF1 2AY'
+      },
+      {
+        Id: 'GB|RM|A|99000695',
+        Type: 'Address',
+        Text: 'BFPO 610',
+        Highlight: '0-7',
+        Description: 'BFPO, BF1 6AP'
+      }
+    ]
+  },
+  addressListChannelIsland: {
+    Items: [
+      {
+        Id: 'GB|RM|A|56148213',
+        Type: 'Address',
+        Text: 'J E C, La Route Du Veule, La Collette',
+        Highlight: ';20-23',
+        Description: 'St. Helier, Jersey, JE2 3NX'
+      }
+    ]
+  },
+  addressChannelIsland: {
+    Items: [
+      {
+        Id: 'GB|RM|A|56148213',
+        DomesticId: '56148213',
+        Language: 'ENG',
+        LanguageAlternatives: 'ENG',
+        Department: 'La Route Du Veule',
+        Company: 'J E C',
+        SubBuilding: '',
+        BuildingNumber: '',
+        BuildingName: '',
+        SecondaryStreet: '',
+        Street: 'La Collette',
+        Block: '',
+        Neighbourhood: '',
+        District: 'St. Helier',
+        City: 'Jersey',
+        Line1: 'La Collette',
+        Line2: 'St. Helier',
+        Line3: '',
+        Line4: '',
+        Line5: '',
+        AdminAreaName: '',
+        AdminAreaCode: '',
+        Province: '',
+        ProvinceName: '',
+        ProvinceCode: '',
+        PostalCode: 'JE2 3NX',
+        CountryName: 'Jersey',
+        CountryIso2: 'JE',
+        CountryIso3: 'JEY',
+        CountryIsoNumber: 832,
+        SortingNumber1: '53116',
+        SortingNumber2: '',
+        Barcode: '(JE23NX3XB)',
+        POBoxNumber: '',
+        Label: 'J E C\nLa Route Du Veule\nLa Collette\nSt. Helier\nJERSEY\nJE2 3NX\nJERSEY',
+        Type: 'Commercial',
+        DataLevel: 'Premise',
+        Field1: '49.220000',
+        Field2: '-2.130000',
+        Field3: '',
+        Field4: '',
+        Field5: '',
+        Field6: '',
+        Field7: '',
+        Field8: '',
+        Field9: '',
+        Field10: '',
+        Field11: '',
+        Field12: '',
+        Field13: '',
+        Field14: '',
+        Field15: '',
+        Field16: '',
+        Field17: '',
+        Field18: '',
+        Field19: '',
+        Field20: ''
+      }
+    ]
+  },
+  addressBritishForce: {
+    Items: [
+      {
+        Id: 'GB|RM|A|99000038',
+        DomesticId: '99000038',
+        Language: 'ENG',
+        LanguageAlternatives: 'ENG',
+        Department: '',
+        Company: '',
+        SubBuilding: '',
+        BuildingNumber: '',
+        BuildingName: '',
+        SecondaryStreet: '',
+        Street: '',
+        Block: '',
+        Neighbourhood: '',
+        District: '',
+        City: 'BFPO',
+        Line1: '',
+        Line2: '',
+        Line3: '',
+        Line4: '',
+        Line5: '',
+        AdminAreaName: '',
+        AdminAreaCode: '',
+        Province: '',
+        ProvinceName: '',
+        ProvinceCode: '',
+        PostalCode: 'BF1 2AY',
+        CountryName: 'United Kingdom',
+        CountryIso2: 'GB',
+        CountryIso3: 'GBR',
+        CountryIsoNumber: 826,
+        SortingNumber1: '00000',
+        SortingNumber2: '',
+        Barcode: '(BF12AY1AV)',
+        POBoxNumber: '',
+        Label: 'BFPO\nBF1 2AY\nBFPO 61\nUNITED KINGDOM',
+        Type: 'Residential',
+        DataLevel: 'Premise',
+        Field1: '',
+        Field2: '',
+        Field3: '',
+        Field4: '',
+        Field5: '',
+        Field6: '',
+        Field7: '',
+        Field8: '',
+        Field9: '',
+        Field10: '',
+        Field11: '',
+        Field12: '',
+        Field13: '',
+        Field14: '',
+        Field15: '',
+        Field16: '',
+        Field17: '',
+        Field18: '',
+        Field19: '',
+        Field20: ''
+      }
+    ]
+  }
+};
