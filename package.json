@@ -29,7 +29,7 @@
   "lint-staged": {
     "linters": {
       "**/*.{js,jsx}": [
-        "eslint --fix",
+        "eslint src/ --fix",
         "jest --bail --findRelatedTests --no-cache",
         "git add"
       ],
