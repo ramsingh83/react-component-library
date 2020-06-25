@@ -128,23 +128,18 @@ var PostcodeFinder = function PostcodeFinder(props) {
         if (response.data.Items && response.data.Items.length > 0) {
           var selectedAddress = response.data.Items[0];
           var postalCode = response.data.Items[0].PostalCode;
-          var areaCode = postalCode.replace(/ /g, '').substring(0, 2).toUpperCase(); // Check for british force area.
+          var areaCode = postalCode.replace(/ /g, '').substring(0, 2).toUpperCase(); // Check for british force area and channelIsland.
 
           if (britishForce && britishForce.toUpperCase() === areaCode) {
             newError = addressErrors.britishForceError;
-          } // Check for channel island and isle of man.
-
-
-          if (channelIsland.length && channelIsland.includes(areaCode)) {
+          } else if (channelIsland.length && channelIsland.includes(areaCode)) {
             newError = addressErrors.channelIslandError;
-          } // TODO : Do we have to display address when have channelIsland/BritishForce ?
-          // If YES then extra check require. Default is display address.
-          // *Confirm with business.
-
+          } else {
+            getFormattedAddress(selectedAddress);
+          }
 
           setError(newError);
           setAddressList([]);
-          getFormattedAddress(selectedAddress);
           setSearchText('');
         }
       }).catch(function () {
@@ -152,7 +147,10 @@ var PostcodeFinder = function PostcodeFinder(props) {
         setError(newError);
       });
 
-      searchRef.current.focus();
+      if (searchRef.current) {
+        searchRef.current.focus();
+      }
+
       return;
     }
 

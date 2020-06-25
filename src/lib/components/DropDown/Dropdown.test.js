@@ -1,5 +1,5 @@
 import React from 'react';
-import { create } from "react-test-renderer";
+import { create } from 'react-test-renderer';
 import Dropdown from './Dropdown';
 
 const items = [
@@ -28,10 +28,10 @@ const component = create(
     required />
 );
 
-describe("Checkbox component", () => {
-  test("it shows the correct props of Dropdown", () => {
+describe('Checkbox component', () => {
+  test('it shows the correct props of Dropdown', () => {
     const instance = component.root;
-    const select = instance.findByType("select");
-    expect(select.props.id).toBe("option-id");
+    const select = instance.findByType('select');
+    expect(select.props.id).toBe('option-id');
   });
 });

@@ -11,7 +11,7 @@ import {
   Spinner,
   SectionWrap
 } from '../lib';
-import Config from './config.json';
+import Config from '../config.json';
 
 const items = [
   { id: '0', name: '--Select--' },

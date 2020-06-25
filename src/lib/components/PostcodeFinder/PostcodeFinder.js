@@ -101,20 +101,16 @@ const PostcodeFinder = (props) => {
             const selectedAddress = response.data.Items[0];
             const postalCode = response.data.Items[0].PostalCode;
             const areaCode = postalCode.replace(/ /g, '').substring(0, 2).toUpperCase();
-            // Check for british force area.
+            // Check for british force area and channelIsland.
             if (britishForce && britishForce.toUpperCase() === areaCode) {
               newError = addressErrors.britishForceError;
-            }
-            // Check for channel island and isle of man.
-            if (channelIsland.length && channelIsland.includes(areaCode)) {
+            } else if (channelIsland.length && channelIsland.includes(areaCode)) {
               newError = addressErrors.channelIslandError;
+            } else {
+              getFormattedAddress(selectedAddress);
             }
-            // TODO : Do we have to display address when have channelIsland/BritishForce ?
-            // If YES then extra check require. Default is display address.
-            // *Confirm with business.
             setError(newError);
             setAddressList([]);
-            getFormattedAddress(selectedAddress);
             setSearchText('');
           }
         })
@@ -122,7 +118,10 @@ const PostcodeFinder = (props) => {
           newError = addressErrors.apiDownError;
           setError(newError);
         });
-      searchRef.current.focus();
+
+      if (searchRef.current) {
+        searchRef.current.focus();
+      }
       return;
     }
     getAddressList(address, address.Id);
