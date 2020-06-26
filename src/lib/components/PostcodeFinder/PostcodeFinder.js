@@ -169,7 +169,6 @@ const PostcodeFinder = (props) => {
             id="search-input"
             inputRef={searchRef}
             className={error ? 'invalid' : ''}
-            autoComplete="removeAutoCompletion"
             placeholder={placeholder}
             onChange={e => onHandleSearchInputChanged(e)}
             onBlur={handleFocusOut}
@@ -177,7 +176,7 @@ const PostcodeFinder = (props) => {
             aria-required="true"
             aria-describedby="address-error"
             aria-invalid={!!error} />
-          <span id="search-input" className="visually-hidden">{placeholder}</span>
+          <span id="search-input-help" className="visually-hidden">{placeholder}</span>
         </label>
         {
           error ? <div id="address-error" className="error-info">{error}</div> : null

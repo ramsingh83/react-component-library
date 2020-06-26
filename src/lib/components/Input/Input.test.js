@@ -44,19 +44,19 @@ describe('Test text input', () => {
     const userInput = 'test';
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     expect(wrapper.find('input').props().value).toBe(userInput);
-    expect(wrapper.find(`#${customProps.config.label}-error`).text()).toBe('');
+    expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe('');
   });
 
   it('should through error for empty input field', () => {
     input.simulate('blur');
-    expect(wrapper.find(`#${customProps.config.label}-error`).text()).toBe(customProps.config.emptyError);
+    expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.emptyError);
   });
 
   it('should through error for invalid input field', () => {
     const userInput = '@@';
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     input.simulate('blur');
-    expect(wrapper.find(`#${customProps.config.label}-error`).text()).toBe(customProps.config.invalidError);
+    expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.invalidError);
   });
 });
 
@@ -83,27 +83,27 @@ describe('Test currency input', () => {
 
   it('should through error without entering amount', () => {
     input.simulate('blur');
-    expect(wrapper.find(`#${customProps.config.label}-error`).text()).toBe(customProps.config.emptyError);
+    expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.emptyError);
   });
 
   it('should through error with alphabets/special characters in amount field', () => {
     const userInput = '@@';
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     input.simulate('blur');
-    expect(wrapper.find(`#${customProps.config.label}-error`).text()).toBe(customProps.config.invalidError);
+    expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.invalidError);
   });
 
   it('should through error if value entered is less than minimum amount', () => {
     const userInput = customProps.config.minAmount - 0.01;
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     input.simulate('blur');
-    expect(wrapper.find(`#${customProps.config.label}-error`).text()).toBe(customProps.config.minAmountError);
+    expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.minAmountError);
   });
 
   it('should through error if value entered is greater than maximum amount', () => {
     const userInput = customProps.config.maxAmount + 0.01;
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     input.simulate('blur');
-    expect(wrapper.find(`#${customProps.config.label}-error`).text()).toBe(customProps.config.maxAmountError);
+    expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.maxAmountError);
   });
 });

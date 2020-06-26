@@ -75,5 +75,25 @@
     "maxAmountError": "Please enter the full amount shown on your Fee to Pay card. This should be less than £1000.",
     "currencyPattern": "[^0-9.-]",
     "pattern": "^[0-9.,]+$"
+  },
+  "radioButton": {
+    "emptyError":"Please choose a radio button",
+    "fields": [
+      {
+        "id": "radio-1",
+        "value": "radio1",
+        "label": "Radio button 1"
+      },
+      {
+        "id": "radio-2",
+        "value": "radio2",
+        "label": "Radio button 2"
+      },
+      {
+        "id": "radio-3",
+        "value": "radio3",
+        "label": "Radio button 3"
+      }
+    ]
   }
 }

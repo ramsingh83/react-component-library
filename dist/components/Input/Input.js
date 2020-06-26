@@ -176,8 +176,7 @@ var Input = function Input(props) {
     type: "text",
     tabIndex: "0",
     className: error ? 'invalid' : '',
-    autoComplete: config.autoComplete || 'off',
-    "aria-describedby": "".concat(config.label, "-error"),
+    "aria-describedby": "".concat(inputId, "-error"),
     "aria-label": config.label,
     placeholder: config.placeholder,
     onChange: handleOnInputChanged,
@@ -189,7 +188,7 @@ var Input = function Input(props) {
     "aria-required": "true",
     "aria-invalid": !!error
   })), /*#__PURE__*/_react.default.createElement("div", {
-    id: "".concat(config.label, "-error"),
+    id: "".concat(inputId, "-error"),
     className: "error-info"
   }, error));
 };
