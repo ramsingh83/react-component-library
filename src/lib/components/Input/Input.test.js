@@ -19,7 +19,7 @@ function getWrappedComponent(props) {
   );
 }
 
-describe('Test text input', () => {
+describe('Text input component', () => {
   const customProps = getProps(Config.input, 'input-id', 'testvalue');
   let wrapper;
   let input;
@@ -28,11 +28,11 @@ describe('Test text input', () => {
     input = wrapper.find('input');
   });
 
-  it('Should render Input component with props', () => {
+  it('Should render Input component', () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it('should shows the correct props of Input', () => {
+  it('Should shows the correct props of Input', () => {
     expect(input.props().id).toBe(customProps.inputId);
     expect(input.props().minLength).toBe(customProps.config.minLength);
     expect(input.props().maxLength).toBe(customProps.config.maxLength);
@@ -40,19 +40,19 @@ describe('Test text input', () => {
     expect(Boolean(input.props()['aria-required'])).toBe(customProps.config.required);
   });
 
-  it('should simulate user to input text', () => {
+  it('Should simulate user input', () => {
     const userInput = 'test';
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     expect(wrapper.find('input').props().value).toBe(userInput);
     expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe('');
   });
 
-  it('should through error for empty input field', () => {
+  it('should throw error for empty input field', () => {
     input.simulate('blur');
     expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.emptyError);
   });
 
-  it('should through error for invalid input field', () => {
+  it('should throw error for invalid input field', () => {
     const userInput = '@@';
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     input.simulate('blur');
@@ -60,7 +60,7 @@ describe('Test text input', () => {
   });
 });
 
-describe('Test currency input', () => {
+describe('Currency input component', () => {
   const customProps = getProps(Config.currencyInput, 'currency-input-id', 0);
   let wrapper;
   let input;
@@ -69,11 +69,11 @@ describe('Test currency input', () => {
     input = wrapper.find('input');
   });
 
-  it('Should render Input component with props', () => {
+  it('Should render component with props', () => {
     expect(wrapper.exists()).toEqual(true);
   });
 
-  it('should shows the correct props of Input', () => {
+  it('should shows the correct props', () => {
     expect(input.props().id).toBe(customProps.inputId);
     expect(input.props().minLength).toBe(customProps.config.minLength);
     expect(input.props().maxLength).toBe(customProps.config.maxLength);
@@ -81,26 +81,26 @@ describe('Test currency input', () => {
     expect(Boolean(input.props()['aria-required'])).toBe(customProps.config.required);
   });
 
-  it('should through error without entering amount', () => {
+  it('Should throw error without entering amount', () => {
     input.simulate('blur');
     expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.emptyError);
   });
 
-  it('should through error with alphabets/special characters in amount field', () => {
+  it('Should throw error with alphabets/special characters in amount field', () => {
     const userInput = '@@';
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     input.simulate('blur');
     expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.invalidError);
   });
 
-  it('should through error if value entered is less than minimum amount', () => {
+  it('Should throw error if value entered is less than minimum amount', () => {
     const userInput = customProps.config.minAmount - 0.01;
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     input.simulate('blur');
     expect(wrapper.find(`#${customProps.inputId}-error`).text()).toBe(customProps.config.minAmountError);
   });
 
-  it('should through error if value entered is greater than maximum amount', () => {
+  it('Should throw error if value entered is greater than maximum amount', () => {
     const userInput = customProps.config.maxAmount + 0.01;
     input.simulate('change', { target: { value: userInput }, preventDefault: jest.fn() });
     input.simulate('blur');
