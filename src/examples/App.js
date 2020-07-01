@@ -24,6 +24,8 @@ const App = () => {
   const [validateForm, setValidateForm] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
+    numeric: 0,
+    currencyValue: 0,
     address: '',
     postcode: '',
     email: '',
@@ -32,10 +34,11 @@ const App = () => {
     radioButtonValue: '',
     error: {
       nameError: '',
+      numericError: '',
       addressError: '',
       emailError: '',
       phoneError: '',
-      radioButtonError: ''
+      currencyValueError: ''
     }
   });
 
@@ -52,6 +55,20 @@ const App = () => {
     const newData = { ...formData };
     newData.name = value;
     newData.error.nameError = error;
+    setFormData(newData);
+  };
+
+  const handleNumeric = (value, error) => {
+    const newData = { ...formData };
+    newData.numeric = value;
+    newData.error.numericError = error;
+    setFormData(newData);
+  };
+
+  const handleCurrencyValue = (value, error) => {
+    const newData = { ...formData };
+    newData.currencyValue = value;
+    newData.error.currencyValueError = error;
     setFormData(newData);
   };
 
@@ -87,7 +104,20 @@ const App = () => {
           inputValue={formData.name}
           setInputValue={handleName}
           validateInput={validateForm} />
-
+        <h2>Numeric Input</h2>
+        <Input
+          config={Config.numberInput}
+          inputId="numeric-input-id"
+          inputValue={formData.numeric}
+          setInputValue={handleNumeric}
+          validateInput={validateForm} />
+        <h2>Currency Input</h2>
+        <Input
+          config={Config.currencyInput}
+          inputId="currency-input-id"
+          inputValue={formData.currencyValue}
+          setInputValue={handleCurrencyValue}
+          validateInput={validateForm} />
         <h2>Address Finder</h2>
         <PostcodeFinder
           label="Address"

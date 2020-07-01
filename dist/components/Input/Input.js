@@ -39,9 +39,25 @@ var Input = function Input(props) {
       error = _useState6[0],
       setError = _useState6[1];
 
+  var currencyOptions = {
+    maximumFractionDigits: 2,
+    currency: 'GBP',
+    style: 'currency'
+  };
   (0, _react.useLayoutEffect)(function () {
     setInputValue(value, error);
   }, [value, error]);
+  /**
+   * Convert string type value to number.
+   * Especially for currency input type.
+   * @param {string} amount - amount with string type
+   * @returns {number} amount in number type.
+   */
+
+  var localStringToNumber = function localStringToNumber(amount) {
+    var regExp = new RegExp(config.currencyPattern, 'g');
+    return Number(String(amount).replace(regExp, ''));
+  };
 
   var validate = function validate() {
     var inputPattern = new RegExp(config.pattern);
@@ -56,6 +72,47 @@ var Input = function Input(props) {
     }
 
     setError(newError);
+  };
+  /**
+   * remove any special characters except (,) and (.)
+   * @param {string} val - user input value.
+   * @returns {string} - value with no special characters.
+   */
+
+
+  var formatCurrencyValue = function formatCurrencyValue(val) {
+    return val.replace(/[^0-9.,]/g, '').trim();
+  };
+  /**
+   * validate currency based on min and max config values.
+   * @param {string} targetValue - user entered amount.
+   * @param {*} currencyConfig - config related to currency.
+   * @param {*} options - currency options.
+   */
+
+
+  var validateCurrencyValue = function validateCurrencyValue(targetValue, currencyConfig, options) {
+    // Remove all special characters except decimal for money comparisons
+    var amount = String(targetValue).replace(/[^\d.]/g, '');
+    var validationResult = {
+      result: formatCurrencyValue(localStringToNumber(amount).toLocaleString(undefined, options)),
+      errorMessage: ''
+    };
+
+    switch (true) {
+      case amount < currencyConfig.minAmount:
+        validationResult.errorMessage = currencyConfig.minAmountError;
+        break;
+
+      case amount > currencyConfig.maxAmount:
+        validationResult.errorMessage = currencyConfig.maxAmountError;
+        break;
+
+      default:
+        break;
+    }
+
+    return validationResult;
   };
 
   (0, _react.useLayoutEffect)(function () {
@@ -82,6 +139,7 @@ var Input = function Input(props) {
 
   var handleFocusOut = function handleFocusOut(e) {
     e.preventDefault();
+    var targetValue = e.target.value;
     var inputPattern = new RegExp(config.pattern);
     var newError = '';
 
@@ -91,6 +149,16 @@ var Input = function Input(props) {
       newError = config.emptyError;
     } else {
       newError = '';
+    } // If input type is currency perform extra validation to get currency value.
+
+
+    if (inputPattern.test(targetValue) && targetValue && config.inputType === 'currency') {
+      var _validateCurrencyValu = validateCurrencyValue(targetValue, config, currencyOptions),
+          result = _validateCurrencyValu.result,
+          errorMessage = _validateCurrencyValu.errorMessage;
+
+      setValue(result);
+      newError = errorMessage;
     }
 
     setError(newError);

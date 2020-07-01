@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import RadioButtonGroup from './RadioButtonGroup';
-import Config from '../../../examples/config.json';
+import Config from '../../../config.json';
 
 const component = shallow(
   <RadioButtonGroup

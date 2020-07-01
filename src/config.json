@@ -50,6 +50,32 @@
     "invalidError": "Please enter valid name",
     "pattern": "^[ A-Za-z.,'-]*$"
   },
+  "numberInput": {
+    "label":"Number",
+    "placeholder": "Enter numeric input",
+    "maxLength": "10",
+    "minLength": "2",
+    "required": true,
+    "emptyError":"Please enter a numeric value",
+    "invalidError": "Please enter a valid numeric value, e.g. 3.50",
+    "pattern": "^[0-9]*\\.?[0-9]*$"
+  },
+  "currencyInput": {
+    "label":"Currency",
+    "inputType": "currency",
+    "placeholder": "Enter an amount",
+    "maxLength": "10",
+    "minLength": "2",
+    "required": true,
+    "emptyError":"Please enter the amount due on your fee to pay card.",
+    "invalidError": "Please remove special characters (eg £ / -)",
+    "minAmount": 1.01,
+    "maxAmount": 1000,
+    "minAmountError": "Please enter the full amount shown on your Fee to Pay card. This should be at least £1.01.",
+    "maxAmountError": "Please enter the full amount shown on your Fee to Pay card. This should be less than £1000.",
+    "currencyPattern": "[^0-9.-]",
+    "pattern": "^[0-9.,]+$"
+  },
   "radioButton": {
     "emptyError":"Please choose a radio button",
     "fields": [
