@@ -10,8 +10,8 @@ const emailProps = {
   maxLength: 128,
   minLength: 5,
   required: true,
-  emptyError: 'Please enter email',
-  invalidError: 'Please enter valid email'
+  emptyError: 'Please enter an email',
+  invalidError: 'Please enter a valid email'
 };
 
 const phoneProps = {
@@ -22,8 +22,8 @@ const phoneProps = {
   maxLength: 20,
   minLength: 5,
   required: true,
-  emptyError: 'Please enter phone number',
-  invalidError: 'Please enter valid phone number'
+  emptyError: 'Please enter a phone number',
+  invalidError: 'Please enter a valid phone number'
 };
 
 const emailPattern = /^(?![.])(?!.*?[._]{2})[a-zA-Z0-9._%+\-!#$&'*/=?^`{|}~]+@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
