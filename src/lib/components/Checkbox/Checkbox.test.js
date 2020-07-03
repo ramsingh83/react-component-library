@@ -32,4 +32,9 @@ describe('Checkbox component', () => {
     component.setProps({ checked: true });
     expect(component.find({ type: 'checkbox' }).prop('checked')).toBe(true);
   });
+
+  test('it should uncheck on Checkbox component', () => {
+    component.setProps({ checked: false });
+    expect(component.find({ type: 'checkbox' }).prop('checked')).toBe(false);
+  });
 });
