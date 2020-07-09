@@ -50,7 +50,7 @@ const RadioButtonGroup = (props) => {
               disabled={field.disabled || undefined}
               name={name}
               onChange={handleOptionChange}
-              aria-invalid={!!invalid} />
+              aria-invalid={invalid} />
             <label className={`option ${error ? 'invalid' : ''}`} htmlFor={field.id}>
               {field.label}
             </label>
