@@ -33,7 +33,7 @@ var RadioButton = function RadioButton(props) {
     onChange: handleOptionChange,
     "aria-invalid": !!invalid
   }), /*#__PURE__*/_react.default.createElement("label", {
-    className: "option ".concat(invalid),
+    className: "option ".concat(invalid ? 'invalid' : ''),
     htmlFor: id
   }, children));
 };

@@ -40,7 +40,7 @@ var Checkbox = function Checkbox(_ref) {
     id: id,
     "aria-invalid": !!invalid,
     "aria-describedby": describedBy,
-    className: "form-checkbox ".concat(invalid ? 'error' : ''),
+    className: "form-checkbox ".concat(invalid ? 'invalid' : ''),
     checked: checked,
     onChange: function onChange() {
       return setIsChecked(!isChecked);
