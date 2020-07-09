@@ -125,7 +125,9 @@ var ContactDetails = function ContactDetails(_ref) {
     setContacts(_objectSpread(_objectSpread({}, contacts), {}, (0, _defineProperty2.default)({}, name, value)));
   };
 
-  return /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("legend", null, title), /*#__PURE__*/_react.default.createElement("div", null, fields.map(function (field) {
+  return /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("legend", {
+    className: "contact-sub-title"
+  }, title), /*#__PURE__*/_react.default.createElement("div", null, fields.map(function (field) {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
       key: field.key
     }, /*#__PURE__*/_react.default.createElement("div", {

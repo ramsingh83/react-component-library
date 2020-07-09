@@ -24,7 +24,7 @@ const RadioButton = (props) => {
         name={name}
         onChange={handleOptionChange}
         aria-invalid={!!invalid} />
-      <label className={`option ${invalid}`} htmlFor={id}>
+      <label className={`option ${invalid ? 'invalid' : ''}`} htmlFor={id}>
         {children}
       </label>
     </div>

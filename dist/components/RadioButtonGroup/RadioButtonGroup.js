@@ -51,7 +51,7 @@ var RadioButtonGroup = function RadioButtonGroup(props) {
   };
 
   (0, _react.useLayoutEffect)(function () {
-    setRadioButtonValue(value); // console.log(value)
+    setRadioButtonValue(value);
   }, [value]);
   (0, _react.useLayoutEffect)(function () {
     setValidationOnFirstRender(false);
@@ -81,7 +81,7 @@ var RadioButtonGroup = function RadioButtonGroup(props) {
       onChange: handleOptionChange,
       "aria-invalid": !!invalid
     }), /*#__PURE__*/_react.default.createElement("label", {
-      className: "option ".concat(invalid),
+      className: "option ".concat(error ? 'invalid' : ''),
       htmlFor: field.id
     }, field.label));
   }), /*#__PURE__*/_react.default.createElement("div", {

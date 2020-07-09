@@ -85,7 +85,7 @@ const ContactDetails = ({
 
   return (
     <fieldset>
-      <legend>{title}</legend>
+      <legend className="contact-sub-title">{title}</legend>
       <div>
         {
           fields.map(field => (

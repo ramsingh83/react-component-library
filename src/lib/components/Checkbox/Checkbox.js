@@ -24,7 +24,7 @@ const Checkbox = ({
         id={id}
         aria-invalid={!!invalid}
         aria-describedby={describedBy}
-        className={`form-checkbox ${invalid ? 'error' : ''}`}
+        className={`form-checkbox ${invalid ? 'invalid' : ''}`}
         checked={checked}
         onChange={() => setIsChecked(!isChecked)}
         disabled={disabled}
