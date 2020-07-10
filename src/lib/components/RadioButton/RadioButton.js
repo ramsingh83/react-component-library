@@ -23,7 +23,7 @@ const RadioButton = (props) => {
         disabled={disabled || undefined}
         name={name}
         onChange={handleOptionChange}
-        aria-invalid={!!invalid} />
+        aria-invalid={invalid} />
       <label className={`option ${invalid ? 'invalid' : ''}`} htmlFor={id}>
         {children}
       </label>
@@ -37,7 +37,7 @@ RadioButton.propTypes = {
   checked: PropTypes.bool,
   name: PropTypes.string,
   handleOptionChange: PropTypes.func,
-  invalid: PropTypes.string,
+  invalid: PropTypes.bool,
   disabled: PropTypes.bool
 };
 
