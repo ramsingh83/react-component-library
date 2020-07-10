@@ -11,18 +11,12 @@ const RadioButtonGroup = (props) => {
     invalid
   } = props;
 
-  const [validationOnFirstRender, setValidationOnFirstRender] = useState(true);
+  const [firstRender, setfirstRender] = useState(true);
   const [value, setValue] = useState(defaultValue || '');
   const [error, setError] = useState('');
 
   const validate = () => {
-    let newError = '';
-    if (!value) {
-      newError = config.emptyError;
-    } else {
-      newError = '';
-    }
-    setError(newError);
+    setError(!value ? config.emptyError : '');
   };
 
   useLayoutEffect(() => {
@@ -30,9 +24,10 @@ const RadioButtonGroup = (props) => {
   }, [value]);
 
   useLayoutEffect(() => {
-    setValidationOnFirstRender(false);
-    if (!validationOnFirstRender) {
+    if (!firstRender) {
       validate();
+    } else {
+      setfirstRender(false);
     }
   }, [initialValidation]);
 
@@ -55,7 +50,7 @@ const RadioButtonGroup = (props) => {
               disabled={field.disabled || undefined}
               name={name}
               onChange={handleOptionChange}
-              aria-invalid={!!invalid} />
+              aria-invalid={invalid} />
             <label className={`option ${error ? 'invalid' : ''}`} htmlFor={field.id}>
               {field.label}
             </label>
@@ -70,7 +65,7 @@ const RadioButtonGroup = (props) => {
 RadioButtonGroup.propTypes = {
   name: PropTypes.string.isRequired,
   setRadioButtonValue: PropTypes.func.isRequired,
-  invalid: PropTypes.string,
+  invalid: PropTypes.bool,
   config: PropTypes.shape({}).isRequired,
   defaultValue: PropTypes.string,
   initialValidation: PropTypes.bool.isRequired
