@@ -12,7 +12,8 @@ const component = shallow(
     disabled={false}
     checked={false}
     onHandleChange={() => { }}
-    setInputValue={mockCallBack} />
+    setInputValue={mockCallBack}
+    invalid={false} />
 );
 
 describe('Checkbox component', () => {
