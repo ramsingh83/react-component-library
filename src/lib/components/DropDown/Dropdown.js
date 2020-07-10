@@ -24,7 +24,7 @@ const Dropdown = ({
     <select
       id={elementId}
       className={invalid ? 'error' : ''}
-      aria-invalid={!!invalid}
+      aria-invalid={invalid}
       onBlur={handleBlur}
       onChange={handleChange}
       aria-label={label}

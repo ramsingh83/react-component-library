@@ -7,7 +7,6 @@ const mockCallBack = jest.fn();
 
 const component = shallow(
   <Button
-    styles="primary"
     disabled={isDisable}
     handleClicked={mockCallBack}>
     Submit
@@ -23,7 +22,13 @@ describe('Button component', () => {
     expect(component.find('button').prop('children')).toBe('Submit');
     expect(component.find('button').prop('disabled')).toBe(false);
     expect(component.find('button').prop('type')).toBe('button');
-    expect(component.find('button').prop('className')).toBe('button primary');
+    expect(component.find('button').prop('className')).toBe('button');
+  });
+
+  test('styles get merged with classes', () => {
+    component.setProps({ styles: 'class1 class2' });
+
+    expect(component.find('button').hasClass('button class1 class2')).toBe(true);
   });
 
   test('it shows the Button Component is currently not disabled', () => {
