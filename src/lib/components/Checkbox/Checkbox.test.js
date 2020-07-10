@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Checkbox from './Checkbox';
 
 const mockCallBack = jest.fn();
@@ -37,5 +37,25 @@ describe('Checkbox component', () => {
   test('it should uncheck on Checkbox component', () => {
     component.setProps({ checked: false });
     expect(component.find({ type: 'checkbox' }).prop('checked')).toBe(false);
+  });
+
+  test('selecting a checkbox triggers setInputValue callback', () => {
+    const setInputValueMock = jest.fn();
+
+    const wrapper = mount(
+      <Checkbox
+        id="i-accept"
+        value="YES"
+        label="Are you developer"
+        disabled={false}
+        checked
+        onHandleChange={() => {}}
+        setInputValue={setInputValueMock}
+        invalid={false} />
+    );
+
+    wrapper.find({ type: 'checkbox' }).at(0).simulate('change', { target: { value: 'YES' } });
+    expect(setInputValueMock).toHaveBeenCalledTimes(1);
+    expect(setInputValueMock).toHaveBeenCalledWith(true, 'YES');
   });
 });
