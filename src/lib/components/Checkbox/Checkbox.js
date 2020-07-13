@@ -22,7 +22,7 @@ const Checkbox = ({
       <input
         type="checkbox"
         id={id}
-        aria-invalid={!!invalid}
+        aria-invalid={invalid}
         aria-describedby={describedBy}
         className={`form-checkbox ${invalid ? 'invalid' : ''}`}
         checked={checked}
