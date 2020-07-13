@@ -34,14 +34,24 @@ describe('Tooltip component', () => {
     expect(component.find('div.tooltip-message')).not.toIncludeText('I am a tooltip');
   });
 
-  test('it should show the tooltip message when "Enter" is pressed', () => {
-    component.find('.tooltip-trigger').simulate('keyPress', { keyCode: 13 });
+  test('it should show the tooltip message when "Enter" is pressed with keycode', () => {
+    component.find('.tooltip-trigger').simulate('keyPress', { keyCode: 13, which: 13 });
     expect(component.find('div.tooltip-message').text()).toBe('I am a tooltip');
   });
 
-  test('it should not show the tooltip message when the tooltip close button "Enter" is pressed', () => {
-    component.find('.tooltip-trigger').simulate('keyPress', { keyCode: 13 });
-    component.find('.tooltip-close').simulate('keyPress', { keyCode: 13 });
+  test('it should show the tooltip message when "Enter" is pressed', () => {
+    component.find('.tooltip-trigger').simulate('keyPress', { keyCode: 13, which: 13 });
+    expect(component.find('div.tooltip-message').text()).toBe('I am a tooltip');
+  });
+
+  test('it should not show the tooltip message when a non enter key is pressed', () => {
+    component.find('.tooltip-trigger').simulate('keyPress', { keyCode: 14, which: 14 });
+    expect(component.find('div.tooltip-message')).not.toIncludeText('I am a tooltip');
+  });
+
+  test('it should not show the tooltip message when the tooltip close button "Enter" is pressed with keycode', () => {
+    component.find('.tooltip-trigger').simulate('keyPress', { keyCode: 13, which: 13 });
+    component.find('.tooltip-close').simulate('keyPress', { keyCode: 13, which: 13 });
     expect(component.find('div.tooltip-message')).not.toIncludeText('I am a tooltip');
   });
 });

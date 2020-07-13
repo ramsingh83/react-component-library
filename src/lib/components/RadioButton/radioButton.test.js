@@ -35,4 +35,12 @@ describe('RadioButton component', () => {
     component.setProps({ checked: true });
     expect(component.find('input[type="radio"]').prop('checked')).toBe(true);
   });
+
+  test('label should have the invalid class when invalid prop is true', () => {
+    expect(component.find('label').prop('className')).toEqual('option ');
+
+    component.setProps({ invalid: true });
+
+    expect(component.find('label').prop('className')).toEqual('option invalid');
+  });
 });
