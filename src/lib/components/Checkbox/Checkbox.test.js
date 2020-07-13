@@ -58,4 +58,16 @@ describe('Checkbox component', () => {
     expect(setInputValueMock).toHaveBeenCalledTimes(1);
     expect(setInputValueMock).toHaveBeenCalledWith(true, 'YES');
   });
+
+  test('checkbox should have the invalid class when invalid prop is set to true', () => {
+    expect(component.find({ type: 'checkbox' }).prop('className')).toEqual('form-checkbox ');
+    component.setProps({ invalid: true });
+    expect(component.find({ type: 'checkbox' }).prop('className')).toEqual('form-checkbox invalid');
+  });
+
+  test('label should have the disabled class when disabled prop is true', () => {
+    expect(component.find('label').prop('className')).toEqual('option ');
+    component.setProps({ disabled: true });
+    expect(component.find('label').prop('className')).toEqual('option disabled');
+  });
 });
