@@ -31,7 +31,7 @@ var RadioButton = function RadioButton(props) {
     disabled: disabled || undefined,
     name: name,
     onChange: handleOptionChange,
-    "aria-invalid": !!invalid
+    "aria-invalid": invalid
   }), /*#__PURE__*/_react.default.createElement("label", {
     className: "option ".concat(invalid ? 'invalid' : ''),
     htmlFor: id
@@ -44,7 +44,7 @@ RadioButton.propTypes = {
   checked: _propTypes.default.bool,
   name: _propTypes.default.string,
   handleOptionChange: _propTypes.default.func,
-  invalid: _propTypes.default.string,
+  invalid: _propTypes.default.bool,
   disabled: _propTypes.default.bool
 };
 var _default = RadioButton;
