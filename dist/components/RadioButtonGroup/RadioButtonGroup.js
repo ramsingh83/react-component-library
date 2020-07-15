@@ -25,8 +25,8 @@ var RadioButtonGroup = function RadioButtonGroup(props) {
 
   var _useState = (0, _react.useState)(true),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-      validationOnFirstRender = _useState2[0],
-      setValidationOnFirstRender = _useState2[1];
+      firstRender = _useState2[0],
+      setfirstRender = _useState2[1];
 
   var _useState3 = (0, _react.useState)(defaultValue || ''),
       _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
@@ -39,25 +39,17 @@ var RadioButtonGroup = function RadioButtonGroup(props) {
       setError = _useState6[1];
 
   var validate = function validate() {
-    var newError = '';
-
-    if (!value) {
-      newError = config.emptyError;
-    } else {
-      newError = '';
-    }
-
-    setError(newError);
+    setError(!value ? config.emptyError : '');
   };
 
   (0, _react.useLayoutEffect)(function () {
     setRadioButtonValue(value);
   }, [value]);
   (0, _react.useLayoutEffect)(function () {
-    setValidationOnFirstRender(false);
-
-    if (!validationOnFirstRender) {
+    if (!firstRender) {
       validate();
+    } else {
+      setfirstRender(false);
     }
   }, [initialValidation]);
 
@@ -79,7 +71,7 @@ var RadioButtonGroup = function RadioButtonGroup(props) {
       disabled: field.disabled || undefined,
       name: name,
       onChange: handleOptionChange,
-      "aria-invalid": !!invalid
+      "aria-invalid": invalid
     }), /*#__PURE__*/_react.default.createElement("label", {
       className: "option ".concat(error ? 'invalid' : ''),
       htmlFor: field.id
@@ -93,7 +85,7 @@ var RadioButtonGroup = function RadioButtonGroup(props) {
 RadioButtonGroup.propTypes = {
   name: _propTypes.default.string.isRequired,
   setRadioButtonValue: _propTypes.default.func.isRequired,
-  invalid: _propTypes.default.string,
+  invalid: _propTypes.default.bool,
   config: _propTypes.default.shape({}).isRequired,
   defaultValue: _propTypes.default.string,
   initialValidation: _propTypes.default.bool.isRequired
