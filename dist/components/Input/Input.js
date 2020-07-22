@@ -167,11 +167,12 @@ var Input = function Input(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "form-item"
   }, /*#__PURE__*/_react.default.createElement("label", {
-    className: "input-label",
     htmlFor: inputId
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: "input-label card-name-label"
   }, config.label, config.required ? /*#__PURE__*/_react.default.createElement("span", {
     className: "mandatory"
-  }, "*") : '', children, /*#__PURE__*/_react.default.createElement("input", {
+  }, "*") : ''), children, /*#__PURE__*/_react.default.createElement("input", {
     id: inputId,
     type: "text",
     tabIndex: "0",

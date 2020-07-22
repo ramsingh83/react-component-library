@@ -92,8 +92,10 @@ const ContactDetails = ({
             <React.Fragment key={field.key}>
               <div className="form-item">
                 <label htmlFor={field.key} className="input-label">
-                  {field.label}
-                  {field.required ? <span className="mandatory">*</span> : ''}
+                  <span className="input-label">
+                    {field.label}
+                    {field.required ? <span className="mandatory">*</span> : ''}
+                  </span>
                   <input
                     name={field.key}
                     type="text"
