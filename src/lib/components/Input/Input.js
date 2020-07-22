@@ -131,9 +131,11 @@ const Input = (props) => {
 
   return (
     <div className="form-item">
-      <label className="input-label" htmlFor={inputId}>
-        {config.label}
-        {config.required ? <span className="mandatory">*</span> : ''}
+      <label htmlFor={inputId}>
+        <span className="input-label card-name-label">
+          {config.label}
+          {config.required ? <span className="mandatory">*</span> : ''}
+        </span>
         {children}
         <input
           id={inputId}

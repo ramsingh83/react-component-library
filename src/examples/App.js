@@ -117,7 +117,9 @@ const App = () => {
           inputId="currency-input-id"
           inputValue={formData.currencyValue}
           setInputValue={handleCurrencyValue}
-          validateInput={validateForm} />
+          validateInput={validateForm}>
+          <span className="amount-id-currency">{Config.currencySymbol}</span>
+        </Input>
         <h2>Address Finder</h2>
         <PostcodeFinder
           label="Address"
