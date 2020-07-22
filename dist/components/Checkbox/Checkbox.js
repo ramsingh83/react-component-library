@@ -38,7 +38,7 @@ var Checkbox = function Checkbox(_ref) {
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
     id: id,
-    "aria-invalid": !!invalid,
+    "aria-invalid": invalid,
     "aria-describedby": describedBy,
     className: "form-checkbox ".concat(invalid ? 'invalid' : ''),
     checked: checked,

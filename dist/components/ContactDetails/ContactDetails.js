@@ -135,9 +135,11 @@ var ContactDetails = function ContactDetails(_ref) {
     }, /*#__PURE__*/_react.default.createElement("label", {
       htmlFor: field.key,
       className: "input-label"
+    }, /*#__PURE__*/_react.default.createElement("span", {
+      className: "input-label"
     }, field.label, field.required ? /*#__PURE__*/_react.default.createElement("span", {
       className: "mandatory"
-    }, "*") : '', /*#__PURE__*/_react.default.createElement("input", {
+    }, "*") : ''), /*#__PURE__*/_react.default.createElement("input", {
       name: field.key,
       type: "text",
       className: "form-input ".concat(setError(field.key) ? 'invalid' : ''),
