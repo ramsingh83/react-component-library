@@ -235,7 +235,7 @@ PostcodeFinder.propTypes = {
   placeholder: _propTypes.default.string,
   label: _propTypes.default.string.isRequired,
   setSearchResult: _propTypes.default.func.isRequired,
-  validateInput: _propTypes.default.func.isRequired,
+  validateInput: _propTypes.default.bool.isRequired,
   required: _propTypes.default.bool
 };
 var _default = PostcodeFinder;
