@@ -203,7 +203,7 @@ PostcodeFinder.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string.isRequired,
   setSearchResult: PropTypes.func.isRequired,
-  validateInput: PropTypes.func.isRequired,
+  validateInput: PropTypes.bool.isRequired,
   required: PropTypes.bool
 };
 
