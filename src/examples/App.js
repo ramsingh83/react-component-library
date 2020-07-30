@@ -5,6 +5,7 @@ import {
   ContactDetails,
   Dropdown,
   Input,
+  Modal,
   PostcodeFinder,
   RadioButtonGroup,
   RadioButton,
@@ -22,6 +23,7 @@ const items = [
 
 const App = () => {
   const [validateForm, setValidateForm] = useState(false);
+  const [modelOpen, setModelOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     numeric: 0,
@@ -93,6 +95,17 @@ const App = () => {
 
   return (
     <div className="reactapps app">
+      {modelOpen && (
+        <Modal
+          closed={() => setModelOpen(false)}
+          dialogTitle="dialogTitle"
+          dialogDescription="dialogLinkDescription">
+          <h1 id="dialogTitle">Blah blah blah h1</h1>
+          <h2>Blah blah blah h2</h2>
+          <p id="dialogLinkDescription">Some exciting paragraph</p>
+          <img src="https://www.royalmail.com/sites/default/files/fee-to-pay-card---390x550.png" alt="" />
+        </Modal>
+      )}
       <SectionWrap extraClasses="head">
         <h1>Component Library</h1>
       </SectionWrap>
@@ -169,7 +182,7 @@ const App = () => {
         <RadioButton name="YES" id="yes-id" value="YES">Yes</RadioButton>
         <RadioButton name="NO" id="no-id" value="NO">No</RadioButton>
 
-        <h2>Checckbox:</h2>
+        <h2>Checkbox:</h2>
         <Checkbox
           label="Language"
           value="en"
@@ -181,7 +194,12 @@ const App = () => {
           handleClicked={() => setValidateForm(!validateForm)}>
           Submit
         </Button>
-
+        <h2>Modal:</h2>
+        <Button
+          styles="primary"
+          handleClicked={() => setModelOpen(true)}>
+          Open Modal
+        </Button>
       </SectionWrap>
       <SectionWrap extraClasses="confirm">
         <h2>Spinner</h2>
