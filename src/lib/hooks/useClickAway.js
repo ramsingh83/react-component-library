@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const useOutsideClick = (ref, callback) => {
+const useClickAway = (ref, callback) => {
   const keys = {
     tab: 9,
     escape: 27
@@ -46,4 +46,4 @@ const useOutsideClick = (ref, callback) => {
   });
 };
 
-export default useOutsideClick;
+export default useClickAway;
