@@ -84,28 +84,28 @@ Object.defineProperty(exports, "PostcodeFinder", {
   }
 });
 
-var _Button = _interopRequireDefault(require("./components/Button/Button"));
+var _Button = _interopRequireDefault(require("./Button/Button"));
 
-var _Checkbox = _interopRequireDefault(require("./components/Checkbox/Checkbox"));
+var _Checkbox = _interopRequireDefault(require("./Checkbox/Checkbox"));
 
-var _ContactDetails = _interopRequireDefault(require("./components/ContactDetails/ContactDetails"));
+var _ContactDetails = _interopRequireDefault(require("./ContactDetails/ContactDetails"));
 
-var _Dropdown = _interopRequireDefault(require("./components/DropDown/Dropdown"));
+var _Dropdown = _interopRequireDefault(require("./DropDown/Dropdown"));
 
-var _Icon = _interopRequireDefault(require("./components/Icon/Icon"));
+var _Icon = _interopRequireDefault(require("./Icon/Icon"));
 
-var _Input = _interopRequireDefault(require("./components/Input/Input"));
+var _Input = _interopRequireDefault(require("./Input/Input"));
 
-var _Modal = _interopRequireDefault(require("./components/Modal/Modal"));
+var _Modal = _interopRequireDefault(require("./Modal/Modal"));
 
-var _RadioButton = _interopRequireDefault(require("./components/RadioButton/RadioButton"));
+var _RadioButton = _interopRequireDefault(require("./RadioButton/RadioButton"));
 
-var _RadioButtonGroup = _interopRequireDefault(require("./components/RadioButtonGroup/RadioButtonGroup"));
+var _RadioButtonGroup = _interopRequireDefault(require("./RadioButtonGroup/RadioButtonGroup"));
 
-var _SectionWrap = _interopRequireDefault(require("./components/SectionWrap/SectionWrap"));
+var _SectionWrap = _interopRequireDefault(require("./SectionWrap/SectionWrap"));
 
-var _Spinner = _interopRequireDefault(require("./components/Spinner/Spinner"));
+var _Spinner = _interopRequireDefault(require("./Spinner/Spinner"));
 
-var _Tooltip = _interopRequireDefault(require("./components/Tooltip/Tooltip"));
+var _Tooltip = _interopRequireDefault(require("./Tooltip/Tooltip"));
 
-var _PostcodeFinder = _interopRequireDefault(require("./components/PostcodeFinder/PostcodeFinder"));
+var _PostcodeFinder = _interopRequireDefault(require("./PostcodeFinder/PostcodeFinder"));

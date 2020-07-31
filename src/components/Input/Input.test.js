@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Input from './Input';
-import Config from '../../../config.json';
+import Config from '../../config.json';
 
 function getProps(config, inputId, InputValue) {
   return {
