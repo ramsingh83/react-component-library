@@ -19,11 +19,19 @@
     width: 100%;
   }
 
+  .header {
+    background: $grey-lightest;
+    text-align: center;
+    padding: 20px;
+  }
+
   .navigation {
+    background: $grey-lightest;
     float: left;
     width: 250px;
     list-style-type: none;
     padding: 0;
+    line-height: 3;
   }
 
   .componentpage {
@@ -50,10 +58,10 @@
   .link-button {
     background-color: transparent;
     border: none;
+    text-decoration: underline;
     cursor: pointer;
-    display: inline;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 16px;
+    padding: 10px;
   }
 
   .invalid:focus {

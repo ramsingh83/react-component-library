@@ -18,6 +18,7 @@ const Docs = () => {
 
   return (
     <div className="reactapps app">
+      <h1 className="header"> RMG Shared Library </h1>
       <Navigation components={componentData.map(component => component.name)} />
       <ComponentPage component={matchedComponent} />
     </div>

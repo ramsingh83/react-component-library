@@ -15,9 +15,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Icon = _interopRequireDefault(require("../Icon/Icon"));
 
-var _useClickAway = _interopRequireDefault(require("../../hooks/useClickAway"));
+var _useClickAway = _interopRequireDefault(require("./useClickAway"));
 
-require("./modal.scss");
+require("./modal.css");
 
 var Modal = function Modal(props) {
   var id = props.id,

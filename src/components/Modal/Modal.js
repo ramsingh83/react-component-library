@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon/Icon';
-import useClickAway from '../../hooks/useClickAway';
-import './modal.scss';
+import useClickAway from './useClickAway';
+import './modal.css';
 
 const Modal = (props) => {
   const {
