@@ -26,7 +26,7 @@ Object.defineProperty(exports, "ContactDetails", {
 Object.defineProperty(exports, "Dropdown", {
   enumerable: true,
   get: function get() {
-    return _Dropdown.default;
+    return _DropDown.default;
   }
 });
 Object.defineProperty(exports, "Icon", {
@@ -90,7 +90,7 @@ var _Checkbox = _interopRequireDefault(require("./Checkbox/Checkbox"));
 
 var _ContactDetails = _interopRequireDefault(require("./ContactDetails/ContactDetails"));
 
-var _Dropdown = _interopRequireDefault(require("./DropDown/Dropdown"));
+var _DropDown = _interopRequireDefault(require("./DropDown/DropDown"));
 
 var _Icon = _interopRequireDefault(require("./Icon/Icon"));
 
