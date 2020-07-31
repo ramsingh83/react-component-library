@@ -4,7 +4,7 @@ import { DebounceInput } from 'react-debounce-input';
 import { mountComponent } from './helpers/setup';
 import AddressList from './AddressList';
 import { PCA_PAYLOADS } from './helpers/mockData';
-import Config from '../../../config.json';
+import Config from '../../config.json';
 
 jest.mock('axios');
 
