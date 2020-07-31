@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon/Icon';
+import useClickAway from '../../hooks/useClickAway';
+import './modal.scss';
 
 const Modal = (props) => {
   const {
@@ -11,11 +13,16 @@ const Modal = (props) => {
     closed
   } = props;
 
-  const closeButton = useRef(null);
+  const closeButton = useRef();
+  const rootRef = useRef();
 
   useEffect(() => {
     closeButton.current.focus();
   }, []);
+
+  useClickAway(rootRef, (e) => {
+    closed(e);
+  });
 
   return (
     <div
@@ -23,7 +30,8 @@ const Modal = (props) => {
       className="modal"
       role="dialog"
       aria-labelledby={dialogTitle}
-      aria-describedby={dialogDescription}>
+      aria-describedby={dialogDescription}
+      ref={rootRef}>
       <button
         type="button"
         ref={closeButton}
