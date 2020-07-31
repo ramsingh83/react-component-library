@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Dropdown from './Dropdown';
+import Dropdown from './DropDown';
 
 const items = [
   {
