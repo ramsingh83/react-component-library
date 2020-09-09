@@ -1,5 +1,5 @@
 {
-  "name": "react-shared-library",
+  "name": "react-component-library",
   "version": "0.1.0",
   "main": "dist/index.js",
   "files": [
@@ -67,7 +67,7 @@
       "jsx"
     ]
   },
-  "author": "capgemini",
+  "author": "RamSingh",
   "license": "NOLICENSE",
   "dependencies": {
     "axios": "^0.19.0",
