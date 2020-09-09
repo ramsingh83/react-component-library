@@ -22,7 +22,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "prebuild": "mkdirp build && npm run clean && cross-env CI=true npm t",
     "lint": "eslint src --ext .js --ext .jsx",
-    "lighthouse:ci": "node_modules/lighthouse/lighthouse-cli/index.js --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless' http://localhost:3000",
+    "lighthouse": "node_modules/lighthouse/lighthouse-cli/index.js --output-path=./lighthouse-report.html --quiet --chrome-flags='--headless'",
     "test": "jest --bail --colors --verbose --no-cache",
     "test:watch": "jest --watchAll --bail --colors --verbose --no-cache",
     "doc": "jest --coverage",
