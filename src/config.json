@@ -2,7 +2,7 @@
   "loqate": {
     "channelIsland": ["GY", "JE", "IM"],
     "britishForce": "BF",
-    "key": "testkey",
+    "key": "testKey",
     "addressKeyNames": ["Line1", "Line2", "Line3", "Line4", "Line5", "City", "PostalCode"],
     "addressErrors": {
       "requiredFieldError": "Please provide address",
