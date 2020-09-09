@@ -26,9 +26,9 @@ describe('PostcodeFinder component functionalities', () => {
 
   function getRequestUrl(postcode, addressId) {
     if (addressId) {
-      return `https://services.postcodeanywhere.co.uk/Capture/Interactive/Retrieve/v1.00/json3ex.ws?Key=${encodeURIComponent('KC83-YH29-KW97-TY93')}&Id=${addressId}&$cache=true&$block=true&LastId=${addressId}&SearchTerm=&field1format=${encodeURIComponent('{Latitude}')}&field2format=${encodeURIComponent('{Longitude}')}`;
+      return `https://services.postcodeanywhere.co.uk/Capture/Interactive/Retrieve/v1.00/json3ex.ws?Key=${encodeURIComponent('testKey')}&Id=${addressId}&$cache=true&$block=true&LastId=${addressId}&SearchTerm=&field1format=${encodeURIComponent('{Latitude}')}&field2format=${encodeURIComponent('{Longitude}')}`;
     }
-    return `https://services.postcodeanywhere.co.uk/Capture/Interactive/Find/v1.00/json3ex.ws?Key=${encodeURIComponent('KC83-YH29-KW97-TY93')}&Country=GBR&Text=${postcode}&Container=undefined&LanguagePreference=en&LastId=undefined&SearchFor=Everything&$block=true&$cache=true`;
+    return `https://services.postcodeanywhere.co.uk/Capture/Interactive/Find/v1.00/json3ex.ws?Key=${encodeURIComponent('testKey')}&Country=GBR&Text=${postcode}&Container=undefined&LanguagePreference=en&LastId=undefined&SearchFor=Everything&$block=true&$cache=true`;
   }
 
   beforeEach(() => {
