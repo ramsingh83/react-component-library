@@ -23,6 +23,7 @@
     "prebuild": "mkdirp build && npm run clean && cross-env CI=true npm t",
     "audit": "lighthouse --config-path=./lighthouseConfig.js http://localhost:5000 --chrome-flags='--headless' --output html --output-path=./audit/report.html --save-assets",
     "preaudit": "rimraf audit && mkdirp audit",
+    "serve": "cd build && npx serve",
     "lint": "eslint src --ext .js --ext .jsx",
     "test": "jest --bail --colors --verbose --no-cache",
     "test:watch": "jest --watchAll --bail --colors --verbose --no-cache",
