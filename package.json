@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "ssh://git@andotbt.royalmailgroup.net:8000/rmg/react-shared-library.git"
+    "url": "react-shared-library.git"
   },
   "scripts": {
     "prestart": "npm run gen:docs",
