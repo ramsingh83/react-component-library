@@ -7,5 +7,5 @@ Learn more: 'Provide confluence address'
 ## Installation
 
 ```
-npm install -s git+ssh://domainname/react-shared-library.git
+npm install -s https://github.com/ramsingh83/react-component-library.git
 ```
