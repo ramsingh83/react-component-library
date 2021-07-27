@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "react-shared-library.git"
+    "url": "https://github.com/ramsingh83/react-component-library.git"
   },
   "scripts": {
     "prestart": "npm run gen:docs",
